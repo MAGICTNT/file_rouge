@@ -1,1 +1,158 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fcfcfc;
+    --grey: #c4c4c4;
+    --black: #161515;
+    --green1: #139d25;
+    --green2: #0f7a1d;
+    --green3: #0f641a;
+    --green4: #0a5a14;
+    --red: #CC0000;
+    --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    --linear-gradient: linear-gradient(to bottom, #468412, #356926);
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement doux quand on retourne en haut */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 1em Verdana, sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+header ul,
+footer ul,
+nav ul,
+aside ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* ----- Texte ----- */
+
+h1, h2, h3, h4, h5, h6 {margin-top: 0}
+
+
+
+/* ----- Header/Footer ----- */
+
+.header {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.header-top {
+    background: var(--linear-gradient);
+}
+
+.header-top-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1280px;
+    margin: auto;
+    padding: 15px;
+}
+
+.header .title a {
+    color: var(--white);
+}
+
+header a {
+    text-decoration: none;
+}
+
+.header nav li:not(:last-child) {
+    border-right: solid 1px var(--white);
+}
+
+.header nav li a {
+    color: var(--white);
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+.footer {
+    background: var(--linear-gradient);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+}
+
+.footer .copyright {
+    color: var(--white);
+    font: .7rem sans-serif;
+    text-align: center;
+}
+
+.nav-icon ul li {
+    display: inline-block
+}
+
+
+/* ----- Blocs ----- */
+
+main {
+    margin-bottom: 150px;
+}
+
+.container {
+    max-width: 1280px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin: 0 auto;
+}
+
+.header-bloc {
+    width: 100%;
+    height: 300px;
+    position: relative;
+    overflow: hidden;
+}
+
+.header-bloc img {
+    position: absolute;
+    top: 0;
+    left: 50%; /* Positionne l'image au centre */
+    transform: translateX(-50%); /* Déplace l'image vers la gauche de 50% de sa largeur */
+    z-index: 1;
+}
+
+.header-bloc .filter {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.6) 50%,rgba(0,0,0,.9) 100%);
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+}
+
+.header-bloc:hover .filter {
+    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.6) 100%);
+}
+
+.header-bloc p {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    z-index: 3;
+    font: 800 1.6em sans-serif;
+    color: #fff;
+    margin-bottom: 0;
+    padding: 40px 15px 15px 15px;
+}
+
