@@ -1,1 +1,76 @@
-/* You can add global styles to this file, and also import other style files */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+:root {
+    --white: #fcfcfc;
+    --grey: #c4c4c4;
+    --black: #161515;
+    --green1: #139d25;
+    --green2: #0f7a1d;
+    --green3: #0f641a;
+    --green4: #0a5a14;
+    --red: #CC0000;
+    --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    --linear-gradient: linear-gradient(to bottom, #468412, #356926);
+}
+
+html {
+    scroll-behavior: smooth; /* Défilement doux quand on retourne en haut */
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font: 1em Verdana, sans-serif;
+    background-color: var(--white);
+    color: var(--black);
+}
+
+/* ----- Texte ----- */
+
+h1, h2, h3, h4, h5, h6 {margin-top: 0}
+
+
+
+/* ----- Header/Footer ----- */
+
+.header {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.header-top {
+    background: var(--linear-gradient);
+}
+
+.header-top-in {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 960px;
+    margin: auto;
+    padding: 15px;
+}
+
+.footer {
+    background: var(--linear-gradient);
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    padding: 15px;
+}
+
+.footer .copyright {
+    color: var(--white);
+    font: .7rem sans-serif;
+    text-align: center;
+}
+
+.nav-icon ul li {
+    display: inline-block
+}
