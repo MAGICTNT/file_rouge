@@ -14,14 +14,15 @@ export class HomeComponent implements OnInit{
 
   constructor(private usersService: UsersService){}
 
-  ngOnInit(): void {
-    this.usersService.doHello().subscribe({
-      next: (res) => {
-        this.text = res
-      },
-      error: (err) => {
-        console.log("Error " +  JSON.stringify(err))
-      }
-    });
-  }
+  // ngOnInit(): void {
+  //   this.usersService.doHello().subscribe({
+  //     next: (res) => {
+  //       this.text = res
+  //     },
+  //     error: (err) => {
+  //       console.log("Error " +  JSON.stringify(err))
+  //     }
+  //   });
+  // }
+  
 }
