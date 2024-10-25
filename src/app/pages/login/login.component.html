@@ -1,0 +1,12 @@
+<p>status log test : {{loged}}</p>
+<form [formGroup]="form" (ngSubmit)="login()">
+    <div>
+        <label>login:</label>
+        <input type="text" formControlName="login"/>
+    </div>
+    <div>
+        <label>password:</label>
+        <input type="password" formControlName="password"/>
+    </div>
+    <button>login</button>
+</form>
