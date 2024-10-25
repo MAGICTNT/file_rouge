@@ -241,7 +241,7 @@ main {
 }
 
 .box-image-flex img {
-    max-width: 400px;
+    max-width: 100%; /* Responsive */
     height: auto;
 }
 
@@ -391,6 +391,7 @@ main {
 input[type="text"],
 input[type="number"],
 input[type="email"],
+input[type="password"],
 input[type="phone"],
 input[type="date"],
 select,

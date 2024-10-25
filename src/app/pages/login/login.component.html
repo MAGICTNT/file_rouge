@@ -1,12 +1,28 @@
-<p>status log test : {{loged}}</p>
-<form [formGroup]="form" (ngSubmit)="login()">
-    <div>
-        <label>login:</label>
-        <input type="text" formControlName="login"/>
+<main>
+
+    <h1 class="center">Connexion</h1>
+
+    <div class="form-box">
+
+        <form [formGroup]="form" (ngSubmit)="login()">
+            <div>
+                <label for="login">Pseudo :
+                    <input type="text" id="login" formControlName="login">
+                </label>
+            </div>
+            <div>
+                <label for="password">Mot de passe :
+                    <input type="password" id="password" formControlName="password">
+                </label>
+            </div>
+    
+            <div class="right">
+                <button class="btn btn-success">Connexion</button>
+            </div>
+        </form>
+
     </div>
-    <div>
-        <label>password:</label>
-        <input type="password" formControlName="password"/>
-    </div>
-    <button>login</button>
-</form>
+
+    <p>status log test : {{loged}}</p>
+
+</main>
