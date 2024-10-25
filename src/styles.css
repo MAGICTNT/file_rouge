@@ -8,6 +8,7 @@
     --white: #fcfcfc;
     --grey: #c4c4c4;
     --black: #161515;
+    --green: #077707;
     --green1: #139d25;
     --green2: #0f7a1d;
     --green3: #0f641a;
@@ -29,6 +30,10 @@ body {
     color: var(--black);
 }
 
+h1 {
+    margin-bottom: 50px;
+}
+
 header ul,
 footer ul,
 nav ul,
@@ -38,11 +43,57 @@ aside ul {
     list-style: none;
 }
 
+ul.ingredient-box {
+    margin: 15px;
+    padding: 0;
+}
+
+.center {text-align: center;}
+.right {text-align: right;}
+.mini {
+    font: .7rem sans-serif;
+}
+
+.mt-5 {
+    margin-top: 50px;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 /* ----- Texte ----- */
 
 h1, h2, h3, h4, h5, h6 {margin-top: 0}
 
-
+.h-line {
+    font: 700 1.4rem sans-serif;
+    color: var(--green);
+    position: relative;
+    text-transform: uppercase;
+    padding-top: 8px;
+    margin-top: 50px;
+}
+.h-line::before {
+    position: absolute;
+    content: "";
+    top: 0;
+    left: 0;
+    width: 65px;
+    height: 5px;
+    background-color: var(--green);
+}
+.h-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 60px;
+    width: 6px;
+    height: 5px;
+    background-color: #fff;
+    transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-20deg) skewY(0deg);
+    border-right: solid 6px var(--green);
+}
 
 /* ----- Header/Footer ----- */
 
@@ -64,12 +115,10 @@ h1, h2, h3, h4, h5, h6 {margin-top: 0}
     padding: 15px;
 }
 
-.header .title a {
-    color: var(--white);
-}
-
-header a {
+header a,
+footer a {
     text-decoration: none;
+    color: var(--white);
 }
 
 .header nav li:not(:last-child) {
@@ -156,3 +205,289 @@ main {
     padding: 40px 15px 15px 15px;
 }
 
+.box-img {
+    margin: auto;
+    max-width: 600px;
+}
+
+.box-img img {
+    max-width: 100%; /* Responsive */
+    height: auto;
+}
+
+.box-img-icons {
+    display: flex;
+    justify-content: space-between;
+}
+
+.info-box {
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-between;
+    background-color: #FEEFED;
+    padding: 15px;
+}
+
+
+
+/* ----- Icones ----- */
+
+@font-face {
+    font-family: "icomoon";
+    src: url("/assets/font/icomoon.ttf") format("truetype");
+}
+
+[class*="icon-"] {
+    font-family: "icomoon";
+}
+.icon-moon:before {content: "\e91a";}
+.icon-sun:before {content: "\e9d4";}
+.icon-arrow-first:before {content: "\e90c";}
+.icon-arrow-last:before {content: "\e90e";}
+.icon-gamepad:before {content: "\e904";}
+.icon-dot:before {content: "\e901";}
+.icon-exit:before {content: "\e90b";}
+.icon-arrow-next:before {content: "\e902";}
+.icon-arrow-prev:before {content: "\e903";}
+.icon-home:before {content: "\e900";}
+.icon-tchat:before {content: "\e96c";}
+.icon-user:before {content: "\e971";}
+.icon-search:before {content: "\e986";}
+.icon-f:before {
+    content: "\ea91";
+    color: #395693;
+}
+.icon-i:before {
+    content: "\ea92";
+    color: var(--red);
+}
+.icon-t:before {
+    content: "\ea96";
+    color: #1C9CEA;
+}
+.icon-y:before {content: "\ea9d";}
+.icon-star-empty:before {content: "\e9d7";}
+.icon-star-half:before {content: "\e9d8";}
+.icon-star-full:before {content: "\e9d9";}
+.icon-finger:before {content: "\ea04";}
+.icon-plus:before {content: "\ea0a";}
+.icon-minus:before {content: "\ea0b";}
+.icon-cross:before {content: "\ea0f";}
+.icon-valid:before {content: "\ea10";}
+.icon-arrow-right-bold:before {content: "\ea34";}
+.icon-arrow-right:before {content: "\ea3c";}
+.icon-shift:before {content: "\ea4f";}
+.icon-fire:before {content: "\e908";}
+.icon-quiz:before {content: "\e909";}
+.icon-characters:before {content: "\e907";}
+.icon-newspaper:before {content: "\e905";}
+.icon-pencil:before {content: "\e906";}
+.icon-image:before {content: "\e90d";}
+.icon-music:before {content: "\e911";}
+.icon-movie:before {content: "\e913";}
+.icon-book:before {content: "\e91f";}
+.icon-file-text:before {content: "\e922";}
+.icon-profile:before {content: "\e923";}
+.icon-file-text2:before {content: "\e926";}
+.icon-file-picture:before {content: "\e927";}
+.icon-pdf:before {content: "\eadf";}
+.icon-calculator:before {content: "\e940";}
+.icon-map:before {content: "\e94c";}
+.icon-tv:before {content: "\e95b";}
+.icon-earth:before {content: "\e9ca";}
+.icon-eye:before {content: "\e9ce";}
+.icon-circle-up:before {content: "\ea41";}
+.icon-circle-right:before {content: "\ea42";}
+.icon-circle-down:before {content: "\ea43";}
+.icon-circle-left:before {content: "\ea44";}
+.icon-p:before {content: "\ead1";}
+.icon-quotes-left:before {content: "\e977";}
+.icon-quotes-right:before {content: "\e978";}
+.icon-equalizer:before {content: "\e992";}
+.icon-param:before {content: "\e994";}
+.icon-stats-bars:before {content: "\e99c";}
+.icon-heart-empty:before {content: "\e90f";}
+.icon-warning:before {content: "\ea07";}
+.icon-question:before {content: "\e915";}
+.icon-gift:before {content: "\e90a";}
+.icon-bin:before {content: "\e9ad";}
+.icon-gem:before {content: "\e910";}
+.icon-cart:before {content: "\e93a";}
+.icon-animal:before {content: "\e916";}
+.icon-support:before {content: "\e914";}
+.icon-pokeball:before {content: "\e912";}
+.icon-trophy:before {content: "\e919";}
+.icon-unlocked:before {content: "\e990";}
+.icon-lock:before {content: "\e98f";}
+.icon-pushpin:before {content: "\e946";}
+.icon-envelop:before {content: "\e945";}
+
+.icon-star-full::before {
+    color: grey;
+    cursor: pointer;
+}
+.icon-star-full.active::before {
+    color: red;
+}
+
+.box-img-icons a {
+    text-decoration: none;
+}
+
+.box-img-icons a:not(:last-child) {
+    margin-right: 15px;
+}
+
+/* ----- Formulaire ----- */
+
+.form-box {
+    max-width: 600px;
+    margin: 0 auto;
+    background-color: var(--black);
+    color: var(--white);
+    padding: 15px;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="phone"],
+input[type="date"],
+select,
+textarea {
+    border: 1px solid var(--black);
+    background-color: var(--white);
+    border-radius: 5px;
+    padding: 9px 12px;
+    width: 100%;
+    font: 1em Verdana, sans-serif;
+    outline: none;
+    margin-top: 8px;
+    margin-bottom: 18px;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield; /* Retirer les flèches des inputs de type number. Firefox */
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none; /* Chrome */
+    margin: 0;
+}
+input[type="number"]::-o-inner-spin-button,
+input[type="number"]::-o-outer-spin-button {
+    -o-appearance: none; /* Opera */
+    margin: 0
+}
+
+.btn,
+a.btn {
+    border-radius: 5px;
+    display: inline-block;
+    padding: 9px 12px;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Eviter bordure sur chrome */
+}
+
+.mini-btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Eviter bordure sur chrome */
+}
+
+.btn-success {
+    color: var(--white);
+    background-color: var(--green);
+}
+.btn-success:hover {
+    background-color: #077707;
+}
+.btn-warning {
+    color: var(--black);
+    background-color: var(--yellow);
+}
+.btn-warning:hover {
+    background-color: #f0bb2b;
+}
+.btn-danger {
+    color: var(--white);
+    background-color: var(--red);
+}
+.btn-danger:hover {
+    background-color: #8f0606;
+}
+
+.select-container {
+    position: relative;
+    display: inline-block;
+}
+
+select {
+    padding: 6px 22px 6px 10px; /* On met plus de padding à droite pour y insérer la flèche */
+
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    appearance: none; /* Cacher la flèche de select */
+}
+.arrow-down:after {
+    color: var(--black);
+    content: "\25BC"; /* ▼ */
+    font-size: .8em;
+    position: absolute;
+    pointer-events: none; /* Sans cela, il est impossible de cliquer à cette endroit */
+    right: 6px;
+    top: 16px;
+}
+
+.select-input-container {
+    display: flex;
+}
+
+input.mini-input {
+    padding: 3px 12px;
+    width: 8rem;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.mini-input-container {
+    margin-top: 11px;
+    margin-left: 15px;
+}
+
+.icon-gr {
+    position: relative;
+    top: -27px;
+    left: 103px;
+    font: 18px sans-serif;
+    color: #333333;
+}
+
+textarea {
+    display: block;
+    height: 8em;
+    border-radius: 5px;
+    outline: none;
+    resize: none; /* Désactiver le redimensionnement de textarea */
+}
+
+
+/* ######################## Mobile ######################## */
+
+@media screen and (max-width: 600px) {
+
+    .info-box {
+        font-size: .7rem;
+        padding: 8px;
+    }
+
+    .h-line {
+        font-size: 1rem;
+    }
+
+}

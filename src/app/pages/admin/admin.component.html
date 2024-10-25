@@ -1,1 +1,95 @@
-<p>admin works!</p>
+<main>
+
+    <h1 class="center">Ajouter une recette</h1>
+
+    <div class="form-box">
+
+        <form [formGroup]="recipe_form" (ngSubmit)="addRecipe()">
+
+            <div>
+                <label for="title">Titre :
+                    <input placeholder="Titre" formControlName="title" id="title" type="text" required>
+                </label>
+            </div>
+
+			<div>
+				<label for="category">Catégorie : </label>
+				<div class="select-container">
+					<select formControlName="category" id="category">
+						<option value="">-</option>
+						<option value="">Entrée</option>
+                        <option value="">Plat</option>
+                        <option value="">Désert</option>
+					</select>
+					<div class="arrow-down"></div>
+				</div>
+			</div>
+
+            <div>
+                <label for="person">Nombre de personnes :
+                    <input placeholder="Nombre de personnes" formControlName="person" id="person" type="number" required>
+                </label>
+            </div>
+
+            <div>
+				<label for="diet">Régime : </label>
+				<div class="select-container">
+					<select name="diet" id="diet">
+						<option value="">-</option>
+						<option value="">Végétarisme</option>
+                        <option value="">Sans lactose</option>
+                        <option value="">Sans gluten</option>
+					</select>
+					<div class="arrow-down"></div>
+				</div>
+			</div>
+
+            <div>
+				<label for="diet">Ingrédients : </label>
+                <div class="select-input-container">
+                    <div class="select-container">
+                        <select name="diet" id="diet">
+                            <option value="">-</option>
+                            <option value="">Sucre</option>
+                            <option value="">Sel</option>
+                            <option value="">Oeuf</option>
+                            <option value="">Lait</option>
+                            <option value="">Pomme</option>
+                            <option value="">Poire</option>
+                            <option value="">Farine</option>
+                            <option value="">Huile</option>
+                            <option value="">Beurre</option>
+                        </select>
+                        <div class="arrow-down"></div>
+                    </div>
+    
+                    <div class="mini-input-container">
+                        <label for="gr">
+                            <input placeholder="Grammes" name="gr" id="gr" type="number" class="mini-input" required>
+                            <div class="icon-gr">gr</div>
+                        </label>
+                    </div>
+                </div>
+			</div>
+
+			<div>
+				<label for="description">Description :</label>
+				<textarea name="description" id="description"></textarea>
+			</div>
+
+            <div>
+				<label for="instructions">Instructions :</label>
+				<textarea name="instructions" id="instructions"></textarea>
+			</div>
+
+            <div class="right">
+                <button class="btn btn-success" type="submit">Valider</button>
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+</main>
