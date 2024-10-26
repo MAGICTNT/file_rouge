@@ -6,8 +6,9 @@
 
 :root {
     --white: #fcfcfc;
-    --grey: #c4c4c4;
+    --grey: #686868;
     --black: #161515;
+    --blue: #1515a0;
     --green: #077707;
     --green1: #139d25;
     --green2: #0f7a1d;
@@ -159,6 +160,8 @@ footer a {
 
 /* ----- Blocs ----- */
 
+.block {display: block;}
+
 main {
     margin-bottom: 150px;
 }
@@ -245,26 +248,26 @@ main {
     height: auto;
 }
 
-.flex-child {
+.box-image-flex-child {
     display: flex;
     justify-content: space-between;
 }
 
-.flex-baby {
+.box-image-flex-baby {
     border: 1px solid grey;
     padding: 12px;
     margin: 12px;
 }
 
 
-@media screen and (max-width: 960px) {
-    .flex-between {
+@media screen and (max-width: 1200px) {
+    .box-image-flex {
         flex-direction: column;
     }
 }
 
 @media screen and (max-width: 640px) {
-    .flex-child {
+    .box-image-flex-child {
         flex-direction: column;
     }
 }
@@ -439,6 +442,19 @@ a.btn {
     outline: none; /* Eviter bordure sur chrome */
 }
 
+.micro-btn {
+    border-radius: 5px;
+    padding: 5px 10px;
+    cursor: pointer;
+    border: none;
+    outline: none; /* Eviter bordure sur chrome */
+    color: var(--white);
+    background-color: var(--grey);
+    margin-left: auto;
+    margin-bottom: 15px;
+    display: block;
+}
+
 .btn-success {
     color: var(--white);
     background-color: var(--green);
@@ -490,7 +506,7 @@ select {
 
 input.mini-input {
     padding: 3px 12px;
-    width: 6rem;
+    width: 7.5rem;
     margin-top: 0 !important;
     margin-bottom: 0 !important;
 }
