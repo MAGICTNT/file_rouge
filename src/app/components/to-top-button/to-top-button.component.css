@@ -1,0 +1,37 @@
+.totop {
+    display: block;
+    border-radius: 5px;
+    background-color: rgba(0, 0, 0, 0.7);
+    cursor: pointer;
+    padding: 4px 9px;
+    position: fixed;
+    right: 50px;
+    bottom: 70px;
+    z-index: 10;
+    transition: ease 0.3s;
+}
+
+.totop:hover {
+    background-color: var(--black);
+}
+
+.totop::after {
+    content: "";
+    display: inline-block;
+    margin: 10px 2px 0 3px;
+    width: 10px;
+    height: 10px;
+    border-right: 3px solid #fcfcfc;
+    border-top: 3px solid #fcfcfc;
+    transform: rotate(315deg);
+}
+
+@keyframes totop-animation {
+    from {
+        opacity: 0
+    }
+
+    to {
+        opacity: 1
+    }
+}

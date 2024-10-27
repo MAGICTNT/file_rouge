@@ -7,12 +7,12 @@
         <form [formGroup]="form" (ngSubmit)="login()">
             <div>
                 <label for="login">Pseudo :
-                    <input type="text" id="login" formControlName="login">
+                    <input type="text" id="login" formControlName="login" required>
                 </label>
             </div>
             <div>
                 <label for="password">Mot de passe :
-                    <input type="password" id="password" formControlName="password">
+                    <input type="password" id="password" formControlName="password" required>
                 </label>
             </div>
     
@@ -23,6 +23,6 @@
 
     </div>
 
-    <p>status log test : {{loged}}</p>
+    <p>Status log test : {{loged}}</p>
 
 </main>
