@@ -6,11 +6,12 @@ import { FooterComponent } from './partials/footer/footer.component';
 import { RecipeComponent } from './pages/recipe/recipe.component';
 import { RecipesComponent } from './pages/recipes/recipes.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { BreadcrumbComponent } from './components/breadcrumb/breadcrumb.component';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, HomeComponent, HeaderComponent, FooterComponent, RecipeComponent, RecipesComponent, AdminComponent],
+  imports: [RouterOutlet, HomeComponent, HeaderComponent, FooterComponent, RecipeComponent, RecipesComponent, AdminComponent, BreadcrumbComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

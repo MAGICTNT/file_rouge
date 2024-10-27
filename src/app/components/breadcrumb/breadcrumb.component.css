@@ -1,0 +1,8 @@
+.breadcrumb {
+    font: 1em Verdana, sans-serif;
+    margin-bottom: 40px;
+}
+.breadcrumb a {
+    color: #161515;
+    text-decoration: none;
+}
