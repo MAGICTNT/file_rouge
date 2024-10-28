@@ -79,6 +79,15 @@ ul.ingredient-box {
 
 h1, h2, h3, h4, h5, h6 {margin-top: 0}
 
+.h-underline {
+    background-image: linear-gradient(180deg, #fff, #aab7f0);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    background-size: 100% 15px;
+}
+
 .h-line {
     font: 700 1.4rem sans-serif;
     color: var(--green);
@@ -106,6 +115,57 @@ h1, h2, h3, h4, h5, h6 {margin-top: 0}
     background-color: #fff;
     transform: scale(1) rotate(0deg) translateX(0px) translateY(0px) skewX(-20deg) skewY(0deg);
     border-right: solid 6px var(--green);
+}
+
+.h-triangle {
+    font: 700 2rem sans-serif;
+    color: #111010;
+    position: relative;
+    padding-left: 15px;
+    margin-top: 50px;
+}
+.h-triangle::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    transform: rotate(-11deg);
+
+    border: solid transparent;
+    border-width: 44px 20px 20px 20px;
+    border-color: #66a77f transparent transparent transparent;
+    z-index: -1;
+}
+
+.h-grass {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+}
+.h-grass::before {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* Positionner l'herbe */
+    left: 50%;
+    width: 100%;
+    height: 50px; /* Hauteur de l'herbe */
+    background: linear-gradient(90deg, #4CAF50 50%, #45a049 50%);
+    background-size: 40px 100%;
+    clip-path: polygon(0% 100%, 2.03% 79.27%, 10% 100%, 14.1% 72.98%, 20% 100%, 24.73% 66.18%, 30.45% 95.29%, 34.19% 76.91%, 39.01% 91.36%, 44.19% 72.46%, 50% 100%, 57.79% 70.37%, 61.35% 95.81%, 65.63% 69.59%, 70.09% 91.1%, 76.71% 67.75%, 80.81% 89.53%, 86.89% 71.16%, 90.72% 89.53%, 95.81% 69.84%, 100% 100%);
+    transform: translateX(-50%); /* Centrer l'herbe */
+    z-index: -1; /* Placer derrière le texte */
+}
+
+.h-glow {
+    font-family: cursive;
+    color: #fff;
+    text-align: center;
+
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a2d3a2, 0 0 40px #127e29, 0 0 50px #16853b, 0 0 60px #157c2c, 0 0 70px #62b43b;}
+    to {text-shadow: 0 0 20px #fff, 0 0 30px var(--green), 0 0 40px var(--green), 0 0 50px var(--green), 0 0 60px var(--green), 0 0 70px var(--green), 0 0 80px var(--green);}
 }
 
 /* ----- Header/Footer ----- */
@@ -244,6 +304,7 @@ main {
 .box-img-icons {
     display: flex;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .info-box {
@@ -387,7 +448,7 @@ main {
     cursor: pointer;
 }
 .icon-star-full.active::before {
-    color: red;
+    color: #d2cf11;
 }
 
 .box-img-icons a {
@@ -551,7 +612,7 @@ textarea {
 }
 
 
-/* ----- Toutes les recettes ----- */
+/* ----- Page Toutes les recettes ----- */
 
 .recipes-container {
     display: flex;
@@ -578,8 +639,9 @@ textarea {
 }
 
 @media screen and (max-width: 670px) {
-    .recipe-box {
-        width: 100%;
+    .recipe-box,
+    .recipe-box-in {
+        width: 100% !important;
     }
 }
 

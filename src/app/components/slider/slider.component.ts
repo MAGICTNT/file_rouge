@@ -15,12 +15,12 @@ export class SliderComponent implements AfterViewInit {
   slide1 = document.getElementById("slide1");
 
   images = [
-    { src: 'assets/img/top.jpg', alt: 'Image 1' },
-    { src: 'assets/img/top.jpg', alt: 'Image 2' },
-    { src: 'assets/img/top.jpg', alt: 'Image 3' },
-    { src: 'assets/img/top.jpg', alt: 'Image 4' },
-    { src: 'assets/img/top.jpg', alt: 'Image 5' },
-    { src: 'assets/img/top.jpg', alt: 'Image 6' }
+    { src: 'assets/img/1.jpg', alt: 'Image 1' },
+    { src: 'assets/img/2.jpg', alt: 'Image 2' },
+    { src: 'assets/img/3.jpg', alt: 'Image 3' },
+    { src: 'assets/img/4.jpg', alt: 'Image 4' },
+    { src: 'assets/img/5.jpg', alt: 'Image 5' },
+    { src: 'assets/img/6.jpg', alt: 'Image 6' }
   ];
 
   // ----- Méthodes -----

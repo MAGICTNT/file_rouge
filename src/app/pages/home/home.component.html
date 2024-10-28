@@ -1,39 +1,169 @@
 <main>
 
-    <h2>Notre top recettes</h2>
+    <h1 class="center">Recettes Savoureuses : Explorez le Goût !</h1>
 
-    <app-slider/>
 
-    <div class="box-image-flex">
+    <h2 class="h-triangle">Notre top recettes</h2>
 
-        <div class="box-image-flex-child">
-            <div class="box-image-flex-baby">
-                <img src="assets/img/choux-creme.jpg" alt="">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur facere magnam commodi mollitia doloribus nostrum placeat aut reiciendis corporis ducimus. Omnis suscipit, perferendis veniam alias porro ipsa unde laudantium! Quos porro numquam assumenda ullam, voluptatum repellat minus, sit dolor veniam in libero dolores repellendus. Ipsum modi ad itaque mollitia necessitatibus.</p>
-            </div>
-            <div class="box-image-flex-baby">
-                <img src="assets/img/choux-creme.jpg" alt="">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur facere magnam commodi mollitia doloribus nostrum placeat aut reiciendis corporis ducimus. Omnis suscipit, perferendis veniam alias porro ipsa unde laudantium! Quos porro numquam assumenda ullam, voluptatum repellat minus, sit dolor veniam in libero dolores repellendus. Ipsum modi ad itaque mollitia necessitatibus.</p>
+    <!-- ---------- Dynamique : ---------- -->
+
+    @if (topViewedRecipes.length === 0) {
+        <p class="center">Aucune recette</p>
+    }
+    @else {
+        <div class="recipes-container">
+    
+            @for (recipe of topViewedRecipes; track recipe) {
+    
+                <div class="recipe-box">
+                    <div class="recipe-box-in">
+                        <a [routerLink]="['/recipes', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
+                        <div class="txt">
+                            <h2>{{ recipe.title }}</h2>
+                            <p>{{ recipe.description }}</p>
+                            <p class="views">👁️ {{ recipe.seen }} vues</p>
+                            <a [routerLink]="['/recipes', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+    <!-- ---------- Statique (pour test) : ---------- -->
+
+    <div class="recipes-container">
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/6.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
             </div>
         </div>
 
-        <div class="box-image-flex-child">
-            <div class="box-image-flex-baby">
-                <img src="assets/img/choux-creme.jpg" alt="">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur facere magnam commodi mollitia doloribus nostrum placeat aut reiciendis corporis ducimus. Omnis suscipit, perferendis veniam alias porro ipsa unde laudantium! Quos porro numquam assumenda ullam, voluptatum repellat minus, sit dolor veniam in libero dolores repellendus. Ipsum modi ad itaque mollitia necessitatibus.</p>
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/5.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
             </div>
-            <div class="box-image-flex-baby">
-                <img src="assets/img/choux-creme.jpg" alt="">
-                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Consequuntur facere magnam commodi mollitia doloribus nostrum placeat aut reiciendis corporis ducimus. Omnis suscipit, perferendis veniam alias porro ipsa unde laudantium! Quos porro numquam assumenda ullam, voluptatum repellat minus, sit dolor veniam in libero dolores repellendus. Ipsum modi ad itaque mollitia necessitatibus.</p>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/4.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/3.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
             </div>
         </div>
 
     </div>
 
-    <p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p><p>Lorem</p>
 
+
+    <h2 class="h-triangle">Nos dernières recettes</h2>
+
+    <!-- ---------- Dynamique : ---------- -->
+
+    @if (latestRecipes.length === 0) {
+        <p class="center">Aucune recette</p>
+    }
+    @else {
+        <div class="recipes-container">
+    
+            @for (recipe of latestRecipes; track recipe) {
+    
+                <div class="recipe-box">
+                    <div class="recipe-box-in">
+                        <a [routerLink]="['/recipes', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
+                        <div class="txt">
+                            <h2>{{ recipe.title }}</h2>
+                            <p>{{ recipe.description }}</p>
+                            <a [routerLink]="['/recipes', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+
+    <!-- ---------- Statique (pour test) : ---------- -->
+
+    <div class="recipes-container">
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/10.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/9.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/8.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/7.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+    </div>
 
 
     <!-- <p>{{text}}</p> -->
+
+    <!-- <app-slider/> -->
 
 </main>
