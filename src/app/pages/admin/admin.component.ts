@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
-import { FormArray, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormArray, FormBuilder, FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { Recipe, RecipeService, Category } from '../../utils/services/recipe.service';
 
 @Component({
@@ -19,24 +19,40 @@ export class AdminComponent implements OnInit {
   nutritions: any[] = [];
   ingredients: any[] = [];
 
-  recipe_form: FormGroup = new FormGroup({
-    title: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    idCategory: new FormControl('', [Validators.required]),
-    picture: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    duration: new FormControl('', [Validators.required, Validators.min(1)]),
-    ingredient: new FormControl('', [Validators.required]),
-    ingredients: new FormArray([]),
-    quantity: new FormControl('', [Validators.required, Validators.min(1)]),
-    numberPeople: new FormControl('', [Validators.required, Validators.min(1)]),
-    description: new FormControl('', [Validators.required, Validators.minLength(2)]),
-    idNutrition: new FormControl('', [Validators.required]),
-    instructions: new FormControl('', [Validators.required])
-  });
+  // recipe_form: FormGroup = new FormGroup({
+  //   title: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  //   idCategory: new FormControl('', [Validators.required]),
+  //   picture: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  //   duration: new FormControl('', [Validators.required, Validators.min(1)]),
+  //   ingredient: new FormControl('', [Validators.required]),
+  //   ingredients: new FormArray([]),
+  //   quantity: new FormControl('', [Validators.required, Validators.min(1)]),
+  //   numberPeople: new FormControl('', [Validators.required, Validators.min(1)]),
+  //   description: new FormControl('', [Validators.required, Validators.minLength(2)]),
+  //   idNutrition: new FormControl('', [Validators.required]),
+  //   instructions: new FormControl('', [Validators.required])
+  // });
+
+  recipe_form: FormGroup;
 
 
   // ----- Constructeur -----
 
-  constructor(private recipeService: RecipeService) {}
+  // constructor(private recipeService: RecipeService) {}
+
+  constructor(private recipeService: RecipeService, private fb: FormBuilder) {
+    this.recipe_form = this.fb.group({
+      title: ['', [Validators.required, Validators.minLength(2)]],
+      idCategory: ['', [Validators.required]],
+      picture: ['', [Validators.required, Validators.minLength(2)]],
+      duration: ['', [Validators.required, Validators.min(1)]],
+      numberPeople: ['', [Validators.required, Validators.min(1)]],
+      description: ['', [Validators.required, Validators.minLength(2)]],
+      idNutrition: ['', [Validators.required]],
+      ingredients: this.fb.array([this.createIngredient()]), // FormArray pour les ingrédients
+      instructions: this.fb.array([this.createInstruction()]) // FormArray pour les instructions
+    });
+  }
 
 
   // ----- Méthodes -----
@@ -48,32 +64,29 @@ export class AdminComponent implements OnInit {
     this.getIngredients();
   }
 
-  /**
-   * Obtenir recettes (depuis le service)
-   */
-  getRecipes(): void {
-    this.recipeService.getRecipes().subscribe((recipes) => this.recipes = recipes);
+  // Récupère le FormArray des ingrédients
+  get ingredientsArray(): FormArray {
+    return this.recipe_form.get('ingredients') as FormArray;
   }
 
-  /**
-   * Obtenir les catégories (depuis le service)
-   */
-  getCategories(): void {
-    this.recipeService.getCategories().subscribe((categories) => this.categories = categories);
+  // Crée un nouvel ingrédient
+  createIngredient(): FormGroup {
+    return this.fb.group({
+      id: ['', Validators.required], // ID de l'ingrédient
+      quantity: ['', [Validators.required, Validators.min(1)]] // Quantité
+    });
   }
 
-  /**
-   * Obtenir les types de nutrition (depuis le service)
-   */
-  getNutritions(): void {
-    this.recipeService.getNutritions().subscribe((data) => this.nutritions = data);
+  // Ajouter un ingrédient
+  addIngredient(): void {
+    this.ingredientsArray.push(this.createIngredient());
   }
 
-  /**
-   * Obtenir les ingrédients (depuis le service)
-   */
-  getIngredients(): void {
-    this.recipeService.getIngredients().subscribe((data) => this.ingredients = data);
+  // Supprimer le dernier ingrédient
+  deleteIngredient(): void {
+    if (this.ingredientsArray.length > 1) { // Conserver au moins un ingrédient
+      this.ingredientsArray.removeAt(this.ingredientsArray.length - 1);
+    }
   }
 
   /**
@@ -90,7 +103,11 @@ export class AdminComponent implements OnInit {
         numberPeople: this.recipe_form.value.numberPeople,
         description: this.recipe_form.value.description,
         idNutrition: this.recipe_form.value.idNutrition,
-        instructions: this.recipe_form.value.instructions,
+        ingredients: this.recipe_form.value.ingredients.map((ing: any) => ({
+          id: ing.id,
+          quantity: ing.quantity
+        })), // Extraction des ingrédients et des quantités
+        instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text),
         seen: 0
       };
 
@@ -104,31 +121,42 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // --- createElement ---
+  // --- Méthodes pour les instructions ---
 
-  addIngredient(): void {
-    const ingredientGroup = new FormGroup({
-        id: new FormControl('', [Validators.required]), // ID de l'ingrédient
-        quantity: new FormControl('', [Validators.required, Validators.min(1)]) // Quantité
+  get instructions(): FormArray {
+    return this.recipe_form.get('instructions') as FormArray;
+  }
+
+  createInstruction(): FormGroup {
+    return this.fb.group({
+      text: ['', Validators.required]
     });
-    (this.recipe_form.get('ingredients') as FormArray).push(ingredientGroup);
   }
-
-  removeIngredient(index: number): void {
-    (this.recipe_form.get('ingredients') as FormArray).removeAt(index);
-  }
-
 
   addInstruction(): void {
-    const instructionGroup = new FormGroup({
-        text: new FormControl('', [Validators.required])
-    });
-    (this.recipe_form.get('instructions') as FormArray).push(instructionGroup);
+    this.instructions.push(this.createInstruction());
   }
 
-  removeInstruction(index: number): void {
-      (this.recipe_form.get('instructions') as FormArray).removeAt(index);
+  deleteInstruction(): void {
+    if (this.instructions.length > 1) {
+      this.instructions.removeAt(this.instructions.length - 1);
+    }
   }
 
+  // Méthodes pour obtenir les données depuis le service 
+  getRecipes(): void {
+    this.recipeService.getRecipes().subscribe((recipes) => this.recipes = recipes);
+  }
 
+  getCategories(): void {
+    this.recipeService.getCategories().subscribe((categories) => this.categories = categories);
+  }
+
+  getNutritions(): void {
+    this.recipeService.getNutritions().subscribe((data) => this.nutritions = data);
+  }
+
+  getIngredients(): void {
+    this.recipeService.getIngredients().subscribe((data) => this.ingredients = data);
+  }
 }

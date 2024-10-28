@@ -64,81 +64,35 @@
             </div>
 
 
-            <div>
-                <label for="ingredient">Ingrédients : </label>
-                <div class="select-input-container">
-                    <div class="select-container">
-                        <select formControlName="ingredient" id="ingredient">
-                            <option value="">-</option>
+            <h3>Ingrédients :</h3>
 
-                            @for (ing of ingredients; track ing) {
-                                <option [value]="ing.id">{{ing.title}}</option>
-                            }
-                            @empty {
-                                <option value="">Sucre</option>
-                                <option value="">Sel</option>
-                                <option value="">Oeuf</option>
-                                <option value="">Lait</option>
-                                <option value="">Pomme</option>
-                                <option value="">Poire</option>
-                                <option value="">Farine</option>
-                                <option value="">Huile</option>
-                                <option value="">Beurre</option>
-                            }
-                        </select>
-                        <div class="arrow-down"></div>
+            <div formArrayName="ingredients" id="ingredients_container">
+                @for (ingredient of ingredientsArray.controls; track ingredient; let i = $index) {
+                    <div [formGroupName]="i">
+                        <label for="ingredient">Ingrédient :</label>
+                        <div class="select-input-container">
+                            <div class="select-container">
+                                <select formControlName="id" id="ingredient-{{ i }}">
+                                <option value="">-</option>
+                                @for (ing of ingredients; track ing;) {
+                                    <option [value]="ing.id">{{ ing.title }}</option>
+                                }
+                                </select>
+                                <div class="arrow-down"></div>
+                            </div>
+                            <div class="mini-input-container">
+                                <label for="quantity-{{ i }}">
+                                <input formControlName="quantity" id="quantity-{{ i }}" type="number" class="mini-input" required>
+                                <div class="icon-gr">gr/ml</div>
+                                </label>
+                            </div>
+                        </div>
                     </div>
-                    <div class="mini-input-container">
-                        <label for="quantity">
-                            <input formControlName="quantity" id="quantity" type="number" class="mini-input" required>
-                            <div class="icon-gr">gr/ml</div>
-                        </label>
-                    </div>
-                </div>
-
-                <button type="button" (click)="addIngredient()" class="micro-btn">Ajouter un ingrédient</button>
+                }
             </div>
 
-
-            <!-- <div>
-                <label for="ingredients">Ingrédients :</label>
-                <div formArrayName="ingredients">
-                    @for (ingredient of ingredients; track ingredient; let i = index) {
-                    <div [formGroupName]="i" class="select-input-container">
-                        <div class="select-container">
-                            <select formControlName="id" id="ingredient-{{i}}">
-                                <option value="">-</option>
-                                @for (ing of ingredients; track ing) {
-                                    <option *ngFor="let ing of ingredients" [value]="ing.id">{{ ing.title }}</option>
-                                }
-                                @empty {
-                                    <option value="1">Sucre</option>
-                                    <option value="2">Sel</option>
-                                    <option value="3">Oeuf</option>
-                                    <option value="4">Lait</option>
-                                    <option value="5">Pomme</option>
-                                    <option value="6">Poire</option>
-                                    <option value="7">Farine</option>
-                                    <option value="8">Huile</option>
-                                    <option value="9">Beurre</option>
-                                }
-                            </select>
-                            <div class="arrow-down"></div>
-                        </div>
-                        <div class="mini-input-container">
-                            <label for="quantity-{{i}}">
-                                <input formControlName="quantity" id="quantity-{{i}}" type="number" class="mini-input" placeholder="Quantité" required>
-                                <div class="icon-gr">gr/ml</div>
-                            </label>
-                        </div>
-                        <button type="button" (click)="removeIngredient(i)" class="micro-btn">Supprimer</button>
-                    </div>
-                    }
-                </div>
-                
-                <button type="button" (click)="addIngredient()" class="micro-btn">Ajouter un ingrédient</button>
-            </div> -->
-            
+            <button type="button" (click)="addIngredient()" class="micro-btn">Ajouter un ingrédient</button>
+            <button type="button" (click)="deleteIngredient()" class="micro-btn">Supprimer le dernier ingrédient</button>
 
 			<div>
                 <label for="description">Description :</label>
@@ -146,29 +100,20 @@
             </div>
 
 
+            <h3>Instructions :</h3>
 
-            <div>
-                <label for="instructions">Instructions :</label>
-                <textarea formControlName="instructions" id="instructions"></textarea>
-
-                <button type="button" (click)="addInstruction()" class="micro-btn">Ajouter une instruction</button>
+            <div formArrayName="instructions" id="instructions_container">
+                @for (instruction of instructions.controls; track instruction; let i = $index) {
+                    <div [formGroupName]="i">
+                        <label [for]="'instruction' + (i + 1)">Étape {{ i + 1 }} :</label>
+                        <textarea formControlName="text" [id]="'instruction' + (i + 1)" required></textarea>
+                    </div>
+                }
             </div>
 
-
-            <!-- <div>
-                <label for="instructions">Instructions :</label>
-                <div formArrayName="instructions">
-                    @for (instruction of instructions; track instruction; let i = index) {
-                    <div [formGroupName]="{{i}}" class="instruction-container">
-                        <textarea formControlName="text" id="instruction-{{i}}" placeholder="Instruction" required></textarea>
-                        <button type="button" (click)="removeInstruction(i)" class="micro-btn">Supprimer</button>
-                    </div>
-                    }
-                </div>
-            
-                <button type="button" (click)="addInstruction()" class="micro-btn">Ajouter une instruction</button>
-            </div> -->
-
+            <button type="button" (click)="addInstruction()" class="micro-btn">Ajouter une étape</button>
+            <button type="button" (click)="deleteInstruction()" class="micro-btn">Supprimer la dernière étape</button>
+        
 
             <div class="right">
                 <button class="btn btn-success" type="submit">Valider</button>

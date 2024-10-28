@@ -12,6 +12,7 @@ export interface Recipe {
   seen: number;
   idNutrition: number;
   idCategory: number;
+  ingredients: { id: number; quantity: number }[];
   instructions: string[];
 }
 
