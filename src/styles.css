@@ -31,6 +31,13 @@ body {
     color: var(--black);
 }
 
+@font-face {
+	font-family: "myfont";
+    src: url("/assets/font/myfont.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal; /* Equivalent: 400 */
+}
+
 h1 {
     margin-bottom: 50px;
 }
@@ -121,6 +128,10 @@ h1, h2, h3, h4, h5, h6 {margin-top: 0}
     padding: 15px;
 }
 
+.header-top .title {
+    font: 1rem cursive;
+}
+
 header a,
 footer a {
     text-decoration: none;
@@ -155,6 +166,17 @@ footer a {
 
 .nav-icon ul li {
     display: inline-block
+}
+
+.nav-icon label {
+    font-size: 1.3rem;
+    color: var(--white);
+    cursor: pointer;
+    display: none; /* Caché sur bureau. À apparaître sur mobile */
+}
+
+.nav-icon input[type="checkbox"] {
+    display: none;
 }
 
 
@@ -196,10 +218,6 @@ main {
     z-index: 2;
     width: 100%;
     height: 100%;
-}
-
-.header-bloc:hover .filter {
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.6) 100%);
 }
 
 .header-bloc p {
@@ -610,6 +628,36 @@ textarea {
 
 
 /* ######################## Mobile ######################## */
+
+@media screen and (max-width: 800px) {
+
+    .nav-icon label {
+        display: block;
+    }
+
+    .nav-icon ul {
+        height: 100%;
+        overflow: hidden; /* Obligé de cacher à cause des barres en diagonales. overflow-y:auto va afficher le dépassement des barres */
+        position: fixed;
+        left: 0;
+        top: 0;
+        transition: .5s;
+        z-index: 11;
+        background-color: rgba(0, 0, 0, 0.9);
+
+        transform: translateX(-100%);
+        width: 0; /* Important de garder même quand on utilise translateX. Sinon on voit le menu pendant une demi seconde durant le chargement sur internet */
+    }
+
+    /* ---- Menu actif : ---- */
+
+    .nav-icon input:checked + ul { /* "ul" placé tout de suite après "input:checked" */
+        transform: translateX(0); /* 💡 On passe de translateX(-100%) à translateX(0). Cela permet d'avoir la transition */
+        width: 80%;
+    }
+
+}
+
 
 @media screen and (max-width: 600px) {
 
