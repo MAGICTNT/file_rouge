@@ -3,24 +3,111 @@
     <h1 class="center">Liste de Recettes</h1>
 
 
+    @if (recipes.length === 0) {
+        <p class="center">Aucune recette</p>
+    }
 
 
-    
     <div class="recipes-container">
-        
-        <div>
-            @if (recipes.length === 0) {
-                <p>Aucune recette</p>
-            }
-        </div>
+
+        <!-- ---------- Dynamique : ---------- -->
 
         @for (recipe of recipes; track recipe) {
-        <div class="recipe-card">
-            <h3>{{ recipe.nom }}</h3>
-            <p>{{ recipe.description }}</p>
-            <!-- <button (click)="showRecipeDetails(recipe.id)">Voir Détails</button> -->
-        </div>
+
+            <div class="recipe-box">
+                <div class="recipe-box-in">
+                    <a [routerLink]="['/recipes', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
+                    <div class="txt">
+                        <h2>{{ recipe.title }}</h2>
+                        <p>{{ recipe.description }}</p>
+                        <a [routerLink]="['/recipes', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                    </div>
+                </div>
+            </div>
         }
+
+
+        <!-- ---------- Statique (pour test) : ---------- -->
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/1.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/2.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/3.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/4.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/5.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/6.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+        <div class="recipe-box">
+            <div class="recipe-box-in">
+                <a href="#" class="img"><img src="assets/img/7.jpg" alt=""></a>
+                <div class="txt">
+                    <h2>Tarte au chocolat</h2>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam, veritatis incidunt.</p>
+                    <a href="#" class="mini-btn btn-success">Voir Détails</a>
+                </div>
+            </div>
+        </div>
+
+
+
     </div>
 
 </main>

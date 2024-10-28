@@ -20,7 +20,6 @@
 						<option value="">Entrée</option>
                         <option value="">Plat</option>
                         <option value="">Désert</option>
-                        <!-- <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.title }}</option> -->
                     </select>
                     <div class="arrow-down"></div>
                 </div>
@@ -49,7 +48,6 @@
                 <div class="select-container">
                     <select formControlName="idNutrition" id="idNutrition">
                         <option value="0">-</option>
-
                         @for (nut of nutritions; track nut) {
                             <option [value]="nut.id">{{nut.title}}</option>
                         }

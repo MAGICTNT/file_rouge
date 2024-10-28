@@ -24,6 +24,8 @@ export class RecipeComponent {
   // ----- Méthodes -----
 
   ngOnInit(): void {
+    const recipeId = Number(this.route.snapshot.paramMap.get('id'));
+    
     this.getRecipe(); // Récupère la recette
   }
 

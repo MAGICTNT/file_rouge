@@ -15,7 +15,7 @@
     --green3: #0f641a;
     --green4: #0a5a14;
     --red: #CC0000;
-    --box-shadow: 0px 0px 5px 0px rgba(0, 0, 0, .2);
+    --box-shadow: 0px 0px 5px 0px rgba(23, 134, 42, 0.5);
     --linear-gradient: linear-gradient(to bottom, #468412, #356926);
 }
 
@@ -531,6 +531,82 @@ textarea {
     outline: none;
     resize: none; /* Désactiver le redimensionnement de textarea */
 }
+
+
+/* ----- Toutes les recettes ----- */
+
+.recipes-container {
+    display: flex;
+    flex-wrap: wrap;
+    margin-left: -15px;
+    margin-right: -15px;
+}
+
+.recipe-box {
+    padding: 15px;
+    width: 25%;
+}
+
+@media screen and (max-width: 1280px) {
+    .recipe-box {
+        width: 33.33%;
+    }
+}
+
+@media screen and (max-width: 960px) {
+    .recipe-box {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 670px) {
+    .recipe-box {
+        width: 100%;
+    }
+}
+
+.recipe-box h2 {
+    font-size: 1rem;
+}
+.recipe-box p {
+    font-size: .9rem;
+}
+
+.recipe-box-in {
+    width: 287px;
+    margin: auto;
+    border: 1px solid var(--green);
+    border-radius: 5px;
+    overflow: hidden;
+    display: block;
+    box-shadow: var(--box-shadow);
+}
+
+.recipe-box-in .img {
+    display: block;
+    height: 150px;
+    overflow: hidden;
+}
+
+.recipe-box-in .img img {
+    width: 100%;
+    height: auto;
+    transition: .5s;
+}
+
+.recipe-box-in .img img:hover {
+    transform: rotate(10deg) scale(1.4);
+}
+
+.recipe-box-in .txt {
+    padding: 14px;
+}
+
+.recipe-box-in a {
+    font-size: .8rem;
+    text-decoration: none;
+}
+
 
 
 /* ######################## Mobile ######################## */

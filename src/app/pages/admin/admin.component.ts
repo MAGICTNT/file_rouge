@@ -64,12 +64,16 @@ export class AdminComponent implements OnInit {
     this.getIngredients();
   }
 
-  // Récupère le FormArray des ingrédients
+  /**
+   * Récupère le FormArray des ingrédients
+   */
   get ingredientsArray(): FormArray {
     return this.recipe_form.get('ingredients') as FormArray;
   }
 
-  // Crée un nouvel ingrédient
+  /**
+   * Crée un nouvel ingrédient
+   */
   createIngredient(): FormGroup {
     return this.fb.group({
       id: ['', Validators.required], // ID de l'ingrédient
@@ -77,14 +81,18 @@ export class AdminComponent implements OnInit {
     });
   }
 
-  // Ajouter un ingrédient
+  /**
+   * Ajouter un ingrédient
+   */
   addIngredient(): void {
     this.ingredientsArray.push(this.createIngredient());
   }
 
-  // Supprimer le dernier ingrédient
+  /**
+   * Supprimer le dernier ingrédient
+   */
   deleteIngredient(): void {
-    if (this.ingredientsArray.length > 1) { // Conserver au moins un ingrédient
+    if (this.ingredientsArray.length > 1) { // garde au moins un ingrédient
       this.ingredientsArray.removeAt(this.ingredientsArray.length - 1);
     }
   }
@@ -121,7 +129,7 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // --- Méthodes pour les instructions ---
+  // --- Instructions ---
 
   get instructions(): FormArray {
     return this.recipe_form.get('instructions') as FormArray;
@@ -143,7 +151,8 @@ export class AdminComponent implements OnInit {
     }
   }
 
-  // Méthodes pour obtenir les données depuis le service 
+  // ----- Obtenir les données depuis le service -----
+
   getRecipes(): void {
     this.recipeService.getRecipes().subscribe((recipes) => this.recipes = recipes);
   }
@@ -159,4 +168,5 @@ export class AdminComponent implements OnInit {
   getIngredients(): void {
     this.recipeService.getIngredients().subscribe((data) => this.ingredients = data);
   }
+
 }
