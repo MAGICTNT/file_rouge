@@ -16,6 +16,7 @@
     --green4: #0a5a14;
     --red: #CC0000;
     --box-shadow: 0px 0px 5px 0px rgba(23, 134, 42, 0.5);
+    --box-shadow-inset: inset 2px 2px 12px rgba(0, 0, 0, 0.5);
     --linear-gradient: linear-gradient(to bottom, #468412, #356926);
 }
 
@@ -709,7 +710,27 @@ textarea {
 
         transform: translateX(-100%);
         width: 0; /* Important de garder même quand on utilise translateX. Sinon on voit le menu pendant une demi seconde durant le chargement sur internet */
+
+        box-shadow: 140px 0px 120px 0px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
     }
+
+    .nav-icon ul li {
+        border: 1px solid var(--white);
+        border-radius: 5px;
+        margin: 15px 15px 0 15px;
+    }
+
+    .nav-icon ul li a {
+        padding: 15px;
+        display: block;
+        /* background-color: var(--green);
+        box-shadow: var(--box-shadow-inset); */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
 
     /* ---- Menu actif : ---- */
 

@@ -3,6 +3,50 @@
     <h1 class="center">Liste de Recettes</h1>
 
 
+    <h2 class="h-triangle">Rechercher une recette</h2>
+
+    <form>
+        <label for="title">
+            <input type="text" id="title" placeholder="Rechercher une recette" [(ngModel)]="searchQuery" (input)="onSearch()">
+        </label>
+
+        <!-- <div class="right">
+            <button class="btn btn-success" type="submit">Valider</button>
+        </div> -->
+    </form>
+
+
+    @if (filteredRecipes.length === 0) {
+        <p>Aucune recette trouvée.</p>
+    }
+    @else {
+        <div class="recipes-container">
+    
+            @for (recipe of filteredRecipes; track recipe) {
+                <div  class="recipe-box">
+                    <div class="recipe-box-in">
+                        <a [routerLink]="['/recette', recipe.id]" class="img">
+                            <img [src]="'assets/img/' + recipe.picture" [alt]="recipe.title" />
+                        </a>
+                        <div class="txt">
+                            <h2>{{ recipe.title }}</h2>
+                            <p>{{ recipe.description }}</p>
+                            <a [routerLink]="['/recette', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                        </div>
+                    </div>
+                </div>
+            }
+
+        </div>
+    }
+
+
+
+
+
+
+    <h2 class="h-triangle">Toutes nos recettes</h2>
+
     <!-- ---------- Dynamique : ---------- -->
 
     @if (recipes.length === 0) {
@@ -15,11 +59,11 @@
     
                 <div class="recipe-box">
                     <div class="recipe-box-in">
-                        <a [routerLink]="['/recipes', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
+                        <a [routerLink]="['/recette', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
                         <div class="txt">
                             <h2>{{ recipe.title }}</h2>
                             <p>{{ recipe.description }}</p>
-                            <a [routerLink]="['/recipes', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                            <a [routerLink]="['/recette', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
                         </div>
                     </div>
                 </div>

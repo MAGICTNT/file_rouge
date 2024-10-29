@@ -95,6 +95,7 @@ export class RecipeService {
   deleteRecipe(id: number): Observable<void> {
     return this.http.delete<void>(`${this.apiUrl}/recipes/${id}`);
   }
+
   // -- Catégories --
 
   /**
