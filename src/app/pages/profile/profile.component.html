@@ -1,0 +1,15 @@
+<h1>{{ user.pseudo }}</h1>
+<div id="mail">
+  <h4>{{ user.mail }}</h4>
+  <a (click)="inputMail()"><small>Modifier mon adresse email</small></a>
+</div>
+<form id="changeMail" [formGroup]="changeMailForm" (ngSubmit)="updateMail()" hidden>
+  <h4>Changer mon adresse email</h4>
+  <input type="email" formControlName="mail" [value]="user.mail" [placeholder]="user.mail" />
+  <input type="password" formControlName="password" placeholder="Mot de passe" />
+  <div>
+    <button type="button" (click)="cancelInputMail()">Annuler</button>
+    <button type="submit">OK</button>
+  </div>
+</form>
+<small id="mesageMail"></small>

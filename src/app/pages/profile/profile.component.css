@@ -1,0 +1,48 @@
+h1 {
+  text-align: center;
+}
+
+#mail h4 {
+  display: inline-block;
+}
+
+#mail h4, #changeMail, #mesageMail {
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+#mail a {
+  text-decoration: underline;
+}
+
+#mail a:hover {
+  cursor: pointer;
+}
+
+/* #changeMail {
+  display: none;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  margin: 5px;
+}
+
+#changeMail::after,
+#changeMail input {
+  grid-area: 1/2;
+  padding: 0.25em;
+  margin: 0;
+  border: none;
+}
+
+#changeMail::after {
+  content: attr(data-value) " ";
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+#changeMail:focus-within {
+  border-color: green;
+  box-shadow: 4px 4px 0px green;
+}
+ */
