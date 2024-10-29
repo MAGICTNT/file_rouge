@@ -21,10 +21,14 @@ export class UsersService {
 
   // ----- Méthodes -----
 
-  doLogin(consumerLogin: ConsumerLogin): Observable<{ accessToken: string } | null>{
-    return this.http.post<{ accessToken: string }>(this.url + "/login", consumerLogin).pipe(
+  doLogin(consumerLogin: ConsumerLogin): Observable<{ accessToken: string, pseudo: string, mail: string } | null>{
+    return this.http.post<{ accessToken: string, pseudo: string, mail: string }>(this.url + "/login", consumerLogin).pipe(
       tap((res) => {
-        localStorage.setItem("token", res.accessToken)
+        // localStorage.setItem("token", res.accessToken);
+        console.log(res); 
+        localStorage.setItem("isLogged", 'true');
+        localStorage.setItem("pseudo", res.pseudo);
+        localStorage.setItem("mail", res.mail);
         localStorage.setItem("isAdmin", 'true'); // TODO: Ajouter le rôle de l'utilisateur dans le ConsumerLogin pour pouvoir le récupérer ici
       }),
       catchError((error) => {
@@ -44,10 +48,15 @@ export class UsersService {
     );
   }
 
-  // TODO: Ajouter la déconnexion de l'utilisateur, sans oublire de supprimer le token et isAdmin de localStorage
-
-  getToken(): string | null {
-    return localStorage.getItem('token');
+  doLogout(): void {
+    localStorage.removeItem('isLogged');
+    localStorage.removeItem('pseudo');
+    localStorage.removeItem('mail');
+    localStorage.removeItem('isAdmin');
+  }
+  
+  isLogged(): boolean {
+    return localStorage.getItem('isLogged') === 'true';
   }
 
   isAdmin(): boolean {

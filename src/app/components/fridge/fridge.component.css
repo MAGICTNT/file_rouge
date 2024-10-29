@@ -1,3 +1,7 @@
+[id^="quantity"] a {
+  text-decoration: underline;
+}
+
 [id^="quantity"] button {
   margin-left: 10px;
 }

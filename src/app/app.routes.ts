@@ -11,7 +11,7 @@ import { FridgeComponent } from './components/fridge/fridge.component';
 export const routes: Routes = [
     {path: '', component: HomeComponent}, // http://localhost:4200/
     {path: 'recette', component: RecipeComponent, data: { breadcrumb: 'Recette' }}, // http://localhost:4200/recette
-    { path: 'recette/:id', component: RecipeComponent, data: { breadcrumb: 'Détail de la recette' } },
+    {path: 'recette/:id', component: RecipeComponent, data: { breadcrumb: 'Détail de la recette' } },
     {path: 'recettes', component: RecipesComponent, data: { breadcrumb: 'Liste de Recettes' }}, // http://localhost:4200/recettes
     {path: 'admin', component: AdminComponent, canActivate: [isAdminGuard], data: { breadcrumb: 'Admin' }}, // http://localhost:4200/admin
     {path: 'login', component: LoginComponent, data: { breadcrumb: 'Connexion' }},
