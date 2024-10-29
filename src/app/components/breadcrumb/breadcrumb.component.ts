@@ -3,7 +3,7 @@ import { ActivatedRoute, NavigationEnd, Router, RouterLink } from '@angular/rout
 import { filter, map } from 'rxjs';
 
 
-interface Breadcrumb {
+export interface Breadcrumb {
   label: string;
   url: string;
 }
@@ -19,12 +19,12 @@ export class BreadcrumbComponent implements OnInit {
 
   // ----- Propriétés -----
 
-  // breadcrumbs: Breadcrumb[] = [];
+  breadcrumbs: Breadcrumb[] = [];
 
-  breadcrumbs = [
-    { url: '/', label: 'Accueil' },
-    { url: '/recettes', label: 'Liste de Recettes' },
-  ];
+  // breadcrumbs = [
+  //   { url: '/', label: 'Accueil' },
+  //   { url: '/recettes', label: 'Liste de Recettes' },
+  // ];
 
 
   // ----- Constructeur -----
@@ -63,7 +63,8 @@ export class BreadcrumbComponent implements OnInit {
         breadcrumbs.push({ label, url });
       }
 
-      return this.buildBreadcrumb(child, url, breadcrumbs);
+      // return this.buildBreadcrumb(child, url, breadcrumbs);
+      this.buildBreadcrumb(child, url, breadcrumbs);
     }
 
     return breadcrumbs;

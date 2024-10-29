@@ -16,6 +16,7 @@
     --green4: #0a5a14;
     --red: #CC0000;
     --box-shadow: 0px 0px 5px 0px rgba(23, 134, 42, 0.5);
+    --box-shadow-inset: inset 2px 2px 12px rgba(0, 0, 0, 0.5);
     --linear-gradient: linear-gradient(to bottom, #468412, #356926);
 }
 
@@ -29,6 +30,13 @@ body {
     font: 1em Verdana, sans-serif;
     background-color: var(--white);
     color: var(--black);
+}
+
+@font-face {
+	font-family: "myfont";
+    src: url("/assets/font/myfont.ttf") format("truetype");
+    font-style: normal;
+    font-weight: normal; /* Equivalent: 400 */
 }
 
 h1 {
@@ -72,6 +80,15 @@ ul.ingredient-box {
 
 h1, h2, h3, h4, h5, h6 {margin-top: 0}
 
+.h-underline {
+    background-image: linear-gradient(180deg, #fff, #aab7f0);
+    background-position: 0 100%;
+    background-repeat: no-repeat;
+    display: inline-block;
+
+    background-size: 100% 15px;
+}
+
 .h-line {
     font: 700 1.4rem sans-serif;
     color: var(--green);
@@ -101,6 +118,57 @@ h1, h2, h3, h4, h5, h6 {margin-top: 0}
     border-right: solid 6px var(--green);
 }
 
+.h-triangle {
+    font: 700 2rem sans-serif;
+    color: #111010;
+    position: relative;
+    padding-left: 15px;
+    margin-top: 50px;
+}
+.h-triangle::before {
+    content: "";
+    position: absolute;
+    top: 1px;
+    left: 3px;
+    transform: rotate(-11deg);
+
+    border: solid transparent;
+    border-width: 44px 20px 20px 20px;
+    border-color: #66a77f transparent transparent transparent;
+    z-index: -1;
+}
+
+.h-grass {
+    position: relative;
+    display: inline-block;
+    padding: 20px;
+}
+.h-grass::before {
+    content: "";
+    position: absolute;
+    bottom: 20px; /* Positionner l'herbe */
+    left: 50%;
+    width: 100%;
+    height: 50px; /* Hauteur de l'herbe */
+    background: linear-gradient(90deg, #4CAF50 50%, #45a049 50%);
+    background-size: 40px 100%;
+    clip-path: polygon(0% 100%, 2.03% 79.27%, 10% 100%, 14.1% 72.98%, 20% 100%, 24.73% 66.18%, 30.45% 95.29%, 34.19% 76.91%, 39.01% 91.36%, 44.19% 72.46%, 50% 100%, 57.79% 70.37%, 61.35% 95.81%, 65.63% 69.59%, 70.09% 91.1%, 76.71% 67.75%, 80.81% 89.53%, 86.89% 71.16%, 90.72% 89.53%, 95.81% 69.84%, 100% 100%);
+    transform: translateX(-50%); /* Centrer l'herbe */
+    z-index: -1; /* Placer derrière le texte */
+}
+
+.h-glow {
+    font-family: cursive;
+    color: #fff;
+    text-align: center;
+
+    animation: glow 1s ease-in-out infinite alternate;
+}
+@keyframes glow {
+    from {text-shadow: 0 0 10px #fff, 0 0 20px #fff, 0 0 30px #a2d3a2, 0 0 40px #127e29, 0 0 50px #16853b, 0 0 60px #157c2c, 0 0 70px #62b43b;}
+    to {text-shadow: 0 0 20px #fff, 0 0 30px var(--green), 0 0 40px var(--green), 0 0 50px var(--green), 0 0 60px var(--green), 0 0 70px var(--green), 0 0 80px var(--green);}
+}
+
 /* ----- Header/Footer ----- */
 
 .header {
@@ -119,6 +187,10 @@ h1, h2, h3, h4, h5, h6 {margin-top: 0}
     max-width: 1280px;
     margin: auto;
     padding: 15px;
+}
+
+.header-top .title {
+    font: 1rem cursive;
 }
 
 header a,
@@ -155,6 +227,17 @@ footer a {
 
 .nav-icon ul li {
     display: inline-block
+}
+
+.nav-icon label {
+    font-size: 1.3rem;
+    color: var(--white);
+    cursor: pointer;
+    display: none; /* Caché sur bureau. À apparaître sur mobile */
+}
+
+.nav-icon input[type="checkbox"] {
+    display: none;
 }
 
 
@@ -198,10 +281,6 @@ main {
     height: 100%;
 }
 
-.header-bloc:hover .filter {
-    background: linear-gradient(to bottom,rgba(0,0,0,0) 0,rgba(0,0,0,.4) 50%,rgba(0,0,0,.6) 100%);
-}
-
 .header-bloc p {
     position: absolute;
     right: 0;
@@ -226,6 +305,7 @@ main {
 .box-img-icons {
     display: flex;
     justify-content: space-between;
+    font-size: 1.2rem;
 }
 
 .info-box {
@@ -369,7 +449,7 @@ main {
     cursor: pointer;
 }
 .icon-star-full.active::before {
-    color: red;
+    color: #d2cf11;
 }
 
 .box-img-icons a {
@@ -533,7 +613,7 @@ textarea {
 }
 
 
-/* ----- Toutes les recettes ----- */
+/* ----- Page Toutes les recettes ----- */
 
 .recipes-container {
     display: flex;
@@ -560,8 +640,9 @@ textarea {
 }
 
 @media screen and (max-width: 670px) {
-    .recipe-box {
-        width: 100%;
+    .recipe-box,
+    .recipe-box-in {
+        width: 100% !important;
     }
 }
 
@@ -610,6 +691,56 @@ textarea {
 
 
 /* ######################## Mobile ######################## */
+
+@media screen and (max-width: 800px) {
+
+    .nav-icon label {
+        display: block;
+    }
+
+    .nav-icon ul {
+        height: 100%;
+        overflow: hidden; /* Obligé de cacher à cause des barres en diagonales. overflow-y:auto va afficher le dépassement des barres */
+        position: fixed;
+        left: 0;
+        top: 0;
+        transition: .5s;
+        z-index: 11;
+        background-color: rgba(0, 0, 0, 0.9);
+
+        transform: translateX(-100%);
+        width: 0; /* Important de garder même quand on utilise translateX. Sinon on voit le menu pendant une demi seconde durant le chargement sur internet */
+
+        box-shadow: 140px 0px 120px 0px rgba(0, 0, 0, 0.5);
+        display: flex;
+        flex-direction: column;
+    }
+
+    .nav-icon ul li {
+        border: 1px solid var(--white);
+        border-radius: 5px;
+        margin: 15px 15px 0 15px;
+    }
+
+    .nav-icon ul li a {
+        padding: 15px;
+        display: block;
+        /* background-color: var(--green);
+        box-shadow: var(--box-shadow-inset); */
+        margin-left: 0;
+        margin-right: 0;
+    }
+
+
+    /* ---- Menu actif : ---- */
+
+    .nav-icon input:checked + ul { /* "ul" placé tout de suite après "input:checked" */
+        transform: translateX(0); /* 💡 On passe de translateX(-100%) à translateX(0). Cela permet d'avoir la transition */
+        width: 80%;
+    }
+
+}
+
 
 @media screen and (max-width: 600px) {
 

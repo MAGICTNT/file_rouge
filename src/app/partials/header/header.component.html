@@ -2,14 +2,17 @@
     
     <div class="header-top">
         <div class="header-top-in">
-            <div class="title"><a routerLink="/">Site de recette</a></div>
+            <div class="title"><a routerLink="/">LGRBF Recettes</a></div>
             <div id="my_overlay" class="my-overlay">
                 <nav class="nav-icon">
+                    <label for="menu1" class="label">☰</label>
+                    <input type="checkbox" id="menu1">
                     <ul>
-                        <li><a routerLink="/recettes">Recettes</a></li>
-                        <li><a routerLink="/recette">Recette</a></li>
-                        <li><a routerLink="/login">Connexion</a></li>
-                        <li><a routerLink="/register">Inscription</a></li>
+                        <li><a routerLink="/recettes" (click)="closeMenu()">Recettes</a></li>
+                        <li><a routerLink="/recette" (click)="closeMenu()">Recette</a></li>
+                        <li><a routerLink="/login" (click)="closeMenu()">Connexion</a></li>
+                        <li><a routerLink="/register" (click)="closeMenu()">Inscription</a></li>
+                        <!-- <li><a routerLink="/profil" (click)="closeMenu()">Profil</a></li> -->
                     </ul>
                 </nav>
             </div>
@@ -22,7 +25,7 @@
 
         <span class="filter"></span>
 
-        <p>Bienvenue sur notre site de recettes !</p>
+        <p>{{ randomMessage }}</p>
 
     </div>
 
