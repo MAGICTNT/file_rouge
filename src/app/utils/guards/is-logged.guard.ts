@@ -3,7 +3,9 @@ import { CanActivateFn, Router } from '@angular/router';
 import { UsersService } from '../services/users/users.service';
 
 export const isLoggedGuard: CanActivateFn = (route, state) => {
-  if (!inject(UsersService).getToken()) {
+  // if (!inject(UsersService).getToken()) {
+  
+  if (!inject(UsersService).isLogged()) {
     inject(Router).navigate(['/login']);
     return false;
   }

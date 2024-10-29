@@ -8,7 +8,7 @@
     <div>
       {{ item.ingredient }}
       <span [id]="'quantity' + $index">
-        <a (click)="showQuantityInput($index, item)">({{ item.quantity ?? 0 }})</a>
+        (<a (click)="showQuantityInput($index, item)">{{ item.quantity ?? 0 }}</a>)
         <button (click)="removeFromFridge(item)">X</button>
       </span>
       <span [id]="'quantityInput' + $index">
