@@ -1,0 +1,42 @@
+<div>
+  <h4>Mon frigo</h4>
+
+  <div>
+    @if (fridgeItems.length === 0) {
+    <p>Le frigo est vide</p>
+    } @else { @for (item of fridgeItems; track $index) {
+    <div>
+      {{ item.ingredient }}
+      <span [id]="'quantity' + $index">
+        <a (click)="showQuantityInput($index, item)">({{ item.quantity ?? 0 }})</a>
+        <button (click)="removeFromFridge(item)">X</button>
+      </span>
+      <span [id]="'quantityInput' + $index">
+        <input
+          type="text"
+          onInput="this.parentNode.dataset.value = this.value"
+          size="1"
+          [value]="item.quantity"
+        />
+        <button type="submit" (click)="changeQuantity($index, item)">OK</button>
+      </span>
+    </div>
+    } }
+  </div>
+
+  <hr />
+
+  <form [formGroup]="ingredient_form" (ngSubmit)="addToFridge()">
+    <div>
+      <select formControlName="ingredient" name="ingredient" id="ingredient">
+        @for(ingredient of selectOptions; track ingredient) {
+        <option [value]="ingredient">{{ ingredient }}</option>
+        }
+      </select>
+
+      <input formControlName="quantity" type="number" placeholder="Quantity" />
+    </div>
+
+    <button type="submit">Ajouter au frigo</button>
+  </form>
+</div>

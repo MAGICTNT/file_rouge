@@ -1,0 +1,30 @@
+[id^="quantity"] button {
+  margin-left: 10px;
+}
+
+[id^="quantityInput"] {
+  display: none;
+  border: solid 1px;
+  border-radius: 5px;
+  padding: 0.25em 0.5em;
+  margin: 5px;
+}
+
+[id^="quantityInput"]::after,
+[id^="quantityInput"] input {
+  grid-area: 1/2;
+  padding: 0.25em;
+  margin: 0;
+  border: none;
+}
+
+[id^="quantityInput"]::after {
+  content: attr(data-value) " ";
+  visibility: hidden;
+  white-space: pre-wrap;
+}
+
+[id^="quantityInput"]:focus-within {
+  border-color: green;
+  box-shadow: 4px 4px 0px green;
+}

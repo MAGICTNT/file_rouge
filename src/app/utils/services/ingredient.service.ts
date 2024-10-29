@@ -15,7 +15,7 @@ export class IngredientService {
 
   // ----- Propriétés -----
 
-  private apiUrl = '';
+  private apiUrl = 'http://localhost:8080/api/ingredient';
 
 
   // ----- Constructeur -----
@@ -25,8 +25,12 @@ export class IngredientService {
 
   // ----- Méthodes -----
 
-  getIngredient(code: string): Observable<any> {
-    return this.http.get(`${this.apiUrl}${code}.json`);
+  getIngredient(code: string): Observable<Ingredient> {
+    return this.http.get<Ingredient>(`${this.apiUrl}/${code}`);
+  }
+
+  getAllIngredients(): Observable<Ingredient[]> {
+    return this.http.get<Ingredient[]>(`${this.apiUrl}/all`);
   }
 
 }
