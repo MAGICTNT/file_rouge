@@ -316,42 +316,6 @@ main {
     padding: 15px;
 }
 
-.box-image-flex {
-    display: flex;
-    justify-content: space-between;
-    margin-left: -10px;
-    margin-right: -10px;
-}
-
-.box-image-flex img {
-    max-width: 100%; /* Responsive */
-    height: auto;
-}
-
-.box-image-flex-child {
-    display: flex;
-    justify-content: space-between;
-}
-
-.box-image-flex-baby {
-    border: 1px solid grey;
-    padding: 12px;
-    margin: 12px;
-}
-
-
-@media screen and (max-width: 1200px) {
-    .box-image-flex {
-        flex-direction: column;
-    }
-}
-
-@media screen and (max-width: 640px) {
-    .box-image-flex-child {
-        flex-direction: column;
-    }
-}
-
 /* ----- Icones ----- */
 
 @font-face {
@@ -672,11 +636,11 @@ textarea {
 .recipe-box-in .img img {
     width: 100%;
     height: auto;
-    transition: .5s;
+    transition: .8s;
 }
 
 .recipe-box-in .img img:hover {
-    transform: rotate(10deg) scale(1.4);
+    transform: rotate(5deg) scale(1.2);
 }
 
 .recipe-box-in .txt {

@@ -43,6 +43,7 @@ export class RecipesComponent {
     getRecipes(): void {
       this.recipesService.getRecipes().subscribe((data: any[]) => {
         this.recipes = data;
+        console.log(data);
       });
     }
 

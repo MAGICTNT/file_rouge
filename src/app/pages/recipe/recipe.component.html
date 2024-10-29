@@ -1,11 +1,11 @@
 <main>
 
-    <h1 class="center">Choux à la crème</h1>
-    <!-- <h1 class="center">{{ recipe?.title }}</h1> -->
+    <!-- <h1 class="center">Choux à la crème</h1> -->
+    <h1 class="center">{{ recipe?.title }}</h1>
 
     <div class="box-img">
-        <img src="assets/img/choux-creme.jpg" alt="Choux à la crème">
-        <!-- <img [src]="recipe?.picture" [alt]="recipe?.title"> -->
+        <!-- <img src="assets/img/1.jpg" alt="Choux à la crème"> -->
+        <img [src]="'assets/img/' + recipe?.picture" [alt]="recipe?.title">
 
         <div class="box-img-icons">
             <div (click)="toggleFavorite()"><span class="icon-star-full" [ngClass]="{ 'active': isFavorite }"></span></div>
@@ -17,26 +17,26 @@
         </div>
 
         <div class="info-box">
-            <div>Durée : <span>50</span> min</div>
+            <!-- <div>Durée : <span>50</span> min</div>
             <div>Nb de personnes : <span>2</span></div>
-            <div>Calorie : <span>220</span>kcal</div>
+            <div>Calorie : <span>220</span>kcal</div> -->
 
-            <!-- <div>Durée : <span>{{ recipe?.duration }}</span> min</div>
+            <div>Durée : <span>{{ recipe?.duration }}</span> min</div>
             <div>Nb de personnes : <span>{{ recipe?.numberPeople }}</span></div>
-            <div>Calorie : <span>{{ recipe?.calories }}</span> kcal</div> -->
+            <!-- <div>Calorie : <span>{{ recipe?.calories }}</span> kcal</div> -->
         </div>
     </div>
 
     <div class="box-text mt-5">
-        <p>Qui aime les choux à la crème ? Tout le monde ! Et ceux-là sont tout simplement divins. Une pâte à choux légère et aérienne, de la crème pâtissière vanillée gourmande et savoureuse... Voilà LA recette qui vous fera réussir des petits choux exquis à coup sûr pour épater et surtout régaler famille et amis à l'heure du dessert ou du goûter. Testez-la, vous nous en direz des nouvelles (et vos invités aussi) !</p>
+        <!-- <p>Qui aime les choux à la crème ? Tout le monde ! Et ceux-là sont tout simplement divins. Une pâte à choux légère et aérienne, de la crème pâtissière vanillée gourmande et savoureuse... Voilà LA recette qui vous fera réussir des petits choux exquis à coup sûr pour épater et surtout régaler famille et amis à l'heure du dessert ou du goûter. Testez-la, vous nous en direz des nouvelles (et vos invités aussi) !</p> -->
 
-        <!-- <p>{{ recipe?.description }}</p> -->
+        <p>{{ recipe?.description }}</p>
     </div>
 
     <h2 class="h-line">Ingrédients</h2>
 
     <ul class="ingredient-box">
-        <li>Farine : 125 g</li>
+        <!-- <li>Farine : 125 g</li>
         <li>Beurre salé : 70 g</li>
         <li>Œuf(s) : 3</li>
         <li>Eau : 0,25 l</li>
@@ -44,23 +44,23 @@
         <li>Sucre semoule : 175 g</li>
         <li>Lait entier : 0,5 l</li>
         <li>Jaune(s) d'œuf(s) : 4</li>
-        <li>Vanille : 1</li>
+        <li>Vanille : 1</li> -->
 
-        <!-- @for (ingredient of recipe?.ingredients; track ingredient) {
+        @for (ingredient of recipe?.ingredients; track ingredient) {
             <li>{{ ingredient.title }} : {{ ingredient.quantity }} {{ ingredient.unit }}</li>
-        } -->
+        }
     </ul>
 
     <h2 class="h-line">Instructions</h2>
 
     <div class="box-text">
-        <p>Qui aime les choux à la crème ? Tout le monde ! Et ceux-là sont tout simplement divins. Une pâte à choux légère et aérienne, de la crème pâtissière vanillée gourmande et savoureuse... Voilà LA recette qui vous fera réussir des petits choux exquis à coup sûr pour épater !</p>
-        <p>Testez-la, vous nous en direz des nouvelles (et vos invités aussi) !</p>
-        <!-- 
+        <!-- <p>Qui aime les choux à la crème ? Tout le monde ! Et ceux-là sont tout simplement divins. Une pâte à choux légère et aérienne, de la crème pâtissière vanillée gourmande et savoureuse... Voilà LA recette qui vous fera réussir des petits choux exquis à coup sûr pour épater !</p>
+        <p>Testez-la, vous nous en direz des nouvelles (et vos invités aussi) !</p> -->
+
         @for (instruction of recipe?.instructions; track instruction) {
-            <p>{{ instruction.text }}</p>
-        } -->
-        
+            <p>{{ instruction.description }}</p>
+        }
+
     </div>
 
 </main>

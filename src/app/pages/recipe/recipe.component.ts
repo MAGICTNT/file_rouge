@@ -16,6 +16,7 @@ export class RecipeComponent {
 
   // recipe!: Recipe;
   recipe: Recipe | undefined;
+  ingredientsDetails: { title: string; quantity: number; unit: string }[] = [];
   isFavorite: boolean = false;
   
 
@@ -33,7 +34,19 @@ export class RecipeComponent {
 
     this.recipeService.getRecipeById(recipeId).subscribe((data) => {
       this.recipe = data;
+      console.log('Ingrédients de la recette :', this.recipe.ingredients);
       this.isFavorite = this.checkIfFavorite(recipeId);
+
+      this.recipeService.getIngredients().subscribe(allIngredients => {
+        this.ingredientsDetails = this.recipe?.ingredients.map(ing => {
+          const ingredientDetail = allIngredients.find(ingredient => ingredient.id === ing.id);
+          return {
+            title: ingredientDetail?.title || '',
+            quantity: ing.quantity,
+            unit: ingredientDetail?.unit || ''
+          };
+        }) || [];
+      });
     });
   }
 
@@ -50,7 +63,8 @@ export class RecipeComponent {
     this.isFavorite = !this.isFavorite;
     if (this.isFavorite) {
       this.addToFavorites(this.recipe!.id);
-    } else {
+    }
+    else {
       this.removeFromFavorites(this.recipe!.id);
     }
   }
