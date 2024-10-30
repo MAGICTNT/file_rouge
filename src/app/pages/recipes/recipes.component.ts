@@ -19,7 +19,7 @@ export class RecipesComponent {
     recipes: Recipe[] = [];
     filteredRecipes: Recipe[] = [];
     searchQuery: string = '';
-
+    
 
     // ----- Constructeur -----
   
@@ -29,26 +29,20 @@ export class RecipesComponent {
     // ----- Méthodes -----
 
     ngOnInit(): void {
-      this.getRecipes();
+      // this.getRecipes();
+
+      this.recipesService.getRecipes().subscribe((data) => {
+        this.recipes = data;
+        this.filteredRecipes = data; // Initialise l'affichage avec toutes les recettes
+      });
     }
 
-    
     /**
      * Récupère toutes les recettes depuis le service
      */
     getRecipes(): void {
       this.recipesService.getRecipes().subscribe((data: any[]) => {
-        console.log(data);
-
-        // this.recipes = data;
-        // this.filteredRecipes = data;
-
-        this.recipes = data; // Utiliser directement les données reçues
-        this.filteredRecipes = this.recipes; // Mettre à jour les recettes filtrées
-
-        // this.recipes = data.map(item => item.recipe); // Extraire uniquement les recettes
-        // this.filteredRecipes = this.recipes; // Mettre à jour les recettes filtrées
-        
+        this.recipes = data;
       });
     }
 
@@ -56,13 +50,20 @@ export class RecipesComponent {
     /**
      * Moteur de recherche
      */
-    onSearch(): void {
+    onSearch(event: Event): void {
+      event.preventDefault();
+      const input = event.target as HTMLInputElement
+      this.searchQuery = input.value
       const query = this.searchQuery.toLowerCase();
       this.filteredRecipes = this.recipes.filter(recipe =>
         // recipe.title.toLowerCase().includes(query) || recipe.description.toLowerCase().includes(query)
         recipe.title.toLowerCase().includes(query)
       );
+      console.log(this.searchQuery)
+
+      
     }
 
+      
 
 }
