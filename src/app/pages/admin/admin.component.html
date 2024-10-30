@@ -17,14 +17,7 @@
                 <div class="select-container">
                     <select formControlName="idCategory" id="idCategory">
                         <option value="">-</option>
-                        @for (cat of categories; track cat) {
-                            <option [value]="cat.id">{{cat.title}}</option>
-                        }
-                        @empty {
-                            <option value="">Entrée</option>
-                            <option value="">Plat</option>
-                            <option value="">Désert</option>
-                        }
+                        <option *ngFor="let cat of categories" [value]="cat.id">{{ cat.title }}</option>
                     </select>
                     <div class="arrow-down"></div>
                 </div>
@@ -52,74 +45,51 @@
                 <label for="idNutrition">Régime : </label>
                 <div class="select-container">
                     <select formControlName="idNutrition" id="idNutrition">
-                        <option value="0">-</option>
-                        @for (nut of nutritions; track nut) {
-                            <option [value]="nut.id">{{nut.title}}</option>
-                        }
-                        @empty {
-                            <option value="1">Végétarisme</option>
-                            <option value="2">Sans lactose</option>
-                            <option value="3">Sans gluten</option>
-                        }
+                        <option value="">-</option>
+                        <option *ngFor="let nut of nutritions" [value]="nut.id">{{ nut.title }}</option>
                     </select>
                     <div class="arrow-down"></div>
                 </div>
             </div>
 
-
             <h3>Ingrédients :</h3>
 
             <div formArrayName="ingredients" id="ingredients_container">
-                @for (ingredient of ingredientsArray.controls; track ingredient; let i = $index) {
-                    <div [formGroupName]="i">
-                        <label for="ingredient">Ingrédient :</label>
-                        <div class="select-input-container">
-                            <div class="select-container">
-                                <select formControlName="id" id="ingredient-{{ i }}">
+                <div *ngFor="let ingredient of ingredientsArray.controls; let i = index" [formGroupName]="i">
+                    <label for="ingredient">Ingrédient :</label>
+                    <div class="select-input-container">
+                        <div class="select-container">
+                            <select formControlName="id" [id]="'ingredient-' + i">
                                 <option value="">-</option>
-                                @for (ing of ingredients; track ing;) {
-                                    <option [value]="ing.id">{{ ing.title }}</option>
-                                }
-                                @empty {
-                                    <option value="1">Farine</option>
-                                    <option value="2">Lait</option>
-                                    <option value="3">Oeuf</option>
-                                    <option value="4">Sucre</option>
-                                    <option value="5">Sel</option>
-                                    <option value="6">Levure</option>
-                                }
-                                </select>
-                                <div class="arrow-down"></div>
-                            </div>
-                            <div class="mini-input-container">
-                                <label for="quantity-{{ i }}">
-                                <input formControlName="quantity" id="quantity-{{ i }}" type="number" class="mini-input" required>
+                                <option *ngFor="let ing of ingredients" [value]="ing.id">{{ ing.title }}</option>
+                            </select>
+                            <div class="arrow-down"></div>
+                        </div>
+                        <div class="mini-input-container">
+                            <label for="quantity-{{ i }}">
+                                <input formControlName="quantity" [id]="'quantity-' + i" type="number" class="mini-input" required>
                                 <div class="icon-gr">gr/ml</div>
-                                </label>
-                            </div>
+                            </label>
                         </div>
                     </div>
-                }
+                </div>
             </div>
 
             <button type="button" (click)="addIngredient()" class="micro-btn">Ajouter un ingrédient</button>
             <button type="button" (click)="deleteIngredient()" class="micro-btn">Supprimer le dernier ingrédient</button>
 
-			<div>
+            <div>
                 <label for="description">Description :</label>
                 <textarea formControlName="description" id="description"></textarea>
             </div>
 
-
             <h3>Instructions :</h3>
 
             <div formArrayName="instructions" id="instructions_container">
-                @for (instruction of instructions.controls; track instruction; let i = $index) {
-                    <div [formGroupName]="i">
-                        <label [for]="'instruction' + (i + 1)">Étape {{ i + 1 }} :</label>
-                        <textarea formControlName="text" [id]="'instruction' + (i + 1)" required></textarea>
-                    </div>
-                }
+                <div *ngFor="let instruction of instructions.controls; let i = index" [formGroupName]="i">
+                    <label [for]="'instruction' + (i + 1)">Étape {{ i + 1 }} :</label>
+                    <textarea formControlName="text" [id]="'instruction' + (i + 1)" required></textarea>
+                </div>
             </div>
 
             <button type="button" (click)="addInstruction()" class="micro-btn">Ajouter une étape</button>

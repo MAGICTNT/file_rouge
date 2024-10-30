@@ -110,6 +110,7 @@ export class AdminComponent implements OnInit {
     if (this.recipe_form.valid) {
       console.log(this.recipe_form.value);
 
+
       const newRecipe: Recipe = {
       // const newRecipe: any = {
         id: this.recipes.length > 0 ? this.recipes[this.recipes.length - 1].id + 1 : 1,
@@ -120,12 +121,13 @@ export class AdminComponent implements OnInit {
         numberPeople: this.recipe_form.value.numberPeople,
         description: this.recipe_form.value.description,
         idNutrition: this.recipe_form.value.idNutrition,
+        seen: 0,
         ingredients: this.recipe_form.value.ingredients.map((ing: any) => ({
             id: ing.id,
             quantity: ing.quantity
         })),
         instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text),
-        seen: 0
+
       };
   
       this.recipeService.createRecipe(newRecipe).subscribe(() => {
