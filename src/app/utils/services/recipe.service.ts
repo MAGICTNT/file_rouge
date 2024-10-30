@@ -82,21 +82,22 @@ export class RecipeService {
    * Créer une nouvelle recette
    */
   createRecipe(recipe: Recipe): Observable<Recipe> {
-    return this.http.post<Recipe>(`${this.apiUrl}/recipes`, recipe);
+    return this.http.post<Recipe>(`${this.apiUrl}/recipe/new`, recipe);
   }
+  
 
   /**
    * Mettre à jour une recette existante
    */
   updateRecipe(id: number, recipe: Recipe): Observable<Recipe> {
-    return this.http.put<Recipe>(`${this.apiUrl}/recipes/${id}`, recipe);
+    return this.http.put<Recipe>(`${this.apiUrl}/recipe/${id}`, recipe);
   }
 
   /**
    * Supprimer une recette par ID
    */
   deleteRecipe(id: number): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/recipes/${id}`);
+    return this.http.delete<void>(`${this.apiUrl}/recipe/${id}`);
   }
 
   // -- Catégories --
