@@ -61,6 +61,8 @@ export class RegisterComponent {
       }
     }
 
+    if(this.form.invalid) return;
+
     const consumerRegister: ConsumerRegister = {
       pseudo: this.form.value.pseudo,
       mail: this.form.value.mail,
