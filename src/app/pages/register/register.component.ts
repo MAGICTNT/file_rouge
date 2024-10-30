@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../utils/services/users/users.service';
 import { ConsumerRegister } from '../../types/consumerRegister.type';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register',
@@ -20,9 +21,7 @@ export class RegisterComponent {
     confirmPassword: new FormControl('', [Validators.required, Validators.minLength(6)])
   });
 
-  registrationStatus: string = '';
-
-  constructor(private userService: UsersService) {}
+  constructor(private userService: UsersService, private router: Router) {}
 
   register() {
     if (this.form.invalid || this.form.value.password !== this.form.value.confirmPassword) {
@@ -40,11 +39,10 @@ export class RegisterComponent {
       next: (res) => {
         if (res) {
           console.log("Registration successful:", res);
-          this.registrationStatus = 'registered';
+          this.router.navigate(['/login']);
         }
         else {
           console.log("Registration failed.");
-          this.registrationStatus = 'not registered';
         }
       },
       error: (err) => {
