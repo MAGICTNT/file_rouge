@@ -61,7 +61,7 @@ export class RegisterComponent {
       }
     }
 
-    if(this.form.invalid) return;
+    if(this.form.invalid || this.form.value.password !== this.form.value.confirmPassword) return;
 
     const consumerRegister: ConsumerRegister = {
       pseudo: this.form.value.pseudo,
