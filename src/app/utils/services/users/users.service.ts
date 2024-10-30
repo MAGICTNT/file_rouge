@@ -33,8 +33,8 @@ export class UsersService {
   }
   
 
-  doRegister(consumerRegister: ConsumerRegister): Observable<ConsumerRegister | null>{
-    return this.http.post<ConsumerRegister>(this.url + "/new", consumerRegister);
+  doRegister(consumerRegister: ConsumerRegister): Observable< { pseudo: Map<number, string>, mail: Map<number, string>, role: string } | null>{
+    return this.http.post<{ pseudo: Map<number, string>, mail: Map<number, string>, role: string }>(this.url + "/new", consumerRegister);
   }
 
   doLogout(): void {

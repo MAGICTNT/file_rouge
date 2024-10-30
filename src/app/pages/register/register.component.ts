@@ -71,12 +71,14 @@ export class RegisterComponent {
 
     this.userService.doRegister(consumerRegister).subscribe({
       next: (res) => {
-        if (res) {
-          console.log("Registration successful:", res);
-          this.router.navigate(['/login']);
+        if(res?.pseudo.hasOwnProperty('500')) {
+          if (pseudoMessage) pseudoMessage.innerHTML = "This pseudo is already used";
         }
-        else {
-          console.log("Registration failed.");
+        if(res?.mail.hasOwnProperty('500')) {
+          if (mailMessage) mailMessage.innerHTML = "This email address is already used";
+        }
+        if(res?.pseudo.hasOwnProperty('200') && res?.mail.hasOwnProperty('200')) {
+          this.router.navigate(['/login']);
         }
       },
       error: (err) => {
