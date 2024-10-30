@@ -4,45 +4,32 @@ h1 {
 
 #mail h4 {
   display: inline-block;
+  margin-bottom: 0;
+  margin-right: 20px;
 }
 
-#mail h4, #changeMail, #mesageMail {
+#mailContainer, #passwordContainer, #fridge {
   margin-left: 20px;
   margin-right: 20px;
 }
 
-#mail a {
+#mail a, #password a {
   text-decoration: underline;
 }
 
-#mail a:hover {
+#mail a:hover, #password a:hover {
   cursor: pointer;
 }
 
-/* #changeMail {
-  display: none;
-  border: solid 1px;
-  border-radius: 5px;
-  padding: 0.25em 0.5em;
-  margin: 5px;
+#password, #changePassword {
+  margin-top: 20px;
 }
 
-#changeMail::after,
-#changeMail input {
-  grid-area: 1/2;
-  padding: 0.25em;
-  margin: 0;
-  border: none;
+#fridge {
+  margin-top: 50px;
+  margin-bottom: 100px;
 }
 
-#changeMail::after {
-  content: attr(data-value) " ";
-  visibility: hidden;
-  white-space: pre-wrap;
+#separator {
+  margin-top: 50px;
 }
-
-#changeMail:focus-within {
-  border-color: green;
-  box-shadow: 4px 4px 0px green;
-}
- */

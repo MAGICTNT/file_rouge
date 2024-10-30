@@ -1,15 +1,64 @@
 <h1>{{ user.pseudo }}</h1>
-<div id="mail">
-  <h4>{{ user.mail }}</h4>
-  <a (click)="inputMail()"><small>Modifier mon adresse email</small></a>
-</div>
-<form id="changeMail" [formGroup]="changeMailForm" (ngSubmit)="updateMail()" hidden>
-  <h4>Changer mon adresse email</h4>
-  <input type="email" formControlName="mail" [value]="user.mail" [placeholder]="user.mail" />
-  <input type="password" formControlName="password" placeholder="Mot de passe" />
-  <div>
-    <button type="button" (click)="cancelInputMail()">Annuler</button>
-    <button type="submit">OK</button>
+<div id="mailContainer">
+  <div id="mail">
+    <h4>{{ user.mail }}</h4>
+    <a (click)="inputMail()"><small>Modifier mon adresse email</small></a>
   </div>
-</form>
-<small id="mesageMail"></small>
+  <form
+    id="changeMail"
+    [formGroup]="changeMailForm"
+    (ngSubmit)="updateMail()"
+    hidden
+  >
+    <h4>Changer mon adresse email</h4>
+    <input
+      type="email"
+      formControlName="mail"
+      [value]="user.mail"
+      [placeholder]="user.mail"
+    />
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Mot de passe"
+    />
+    <div>
+      <button type="button" (click)="cancelInputMail()">Annuler</button>
+      <button type="submit">OK</button>
+    </div>
+  </form>
+  <small id="messageMail"></small>
+</div>
+
+<div id="passwordContainer">
+  <div id="password">
+    <a (click)="inputPassword()"><small>Modifier mon mot de passe</small></a>
+  </div>
+  <form id="changePassword" [formGroup]="changePasswordForm" (ngSubmit)="updatePassword()" hidden>
+    <h4>Changer mon mot de passe</h4>
+    <input
+      type="password"
+      formControlName="password"
+      placeholder="Mot de passe"
+    />
+    <input
+      type="password"
+      formControlName="confirmPassword"
+      placeholder="Confirmer le mot de passe"
+    />
+    <div>
+      <button type="button" (click)="cancelInputPassword()">Annuler</button>
+      <button type="submit">OK</button>
+    </div>
+  </form>
+  <small id="messagePassword"></small>
+</div>
+
+<div id="separator">
+  <hr />
+  <hr />
+</div>
+
+<div id="fridge">
+  <app-fridge/>
+</div>

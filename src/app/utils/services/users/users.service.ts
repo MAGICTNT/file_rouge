@@ -58,6 +58,10 @@ export class UsersService {
   updateMail(mail: string, password: string): Observable<{ key: number, value: string } | null> {
     return this.http.put<{ key: number, value: string }>(this.url + "/update/mail", { pseudo: localStorage.getItem('pseudo'), mail: mail, password: password });
   }
+
+  updatePassword(password: string) {
+    return this.http.put<{ key: number, value: string }>(this.url + "/update", { pseudo: localStorage.getItem('pseudo'), mail: localStorage.getItem('mail'), password: password });
+  }
   
   isLogged(): boolean {
     return localStorage.getItem('isLogged') === 'true';
