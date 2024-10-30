@@ -6,7 +6,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { LoginComponent } from './pages/login/login.component';
 import { RegisterComponent } from './pages/register/register.component';
 import { isAdminGuard } from './utils/guards/is-admin.guard';
-import { FridgeComponent } from './components/fridge/fridge.component';
+import { ProfileComponent } from './pages/profile/profile.component';
+import { isLoggedGuard } from './utils/guards/is-logged.guard';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent}, // http://localhost:4200/
@@ -16,6 +17,5 @@ export const routes: Routes = [
     {path: 'admin', component: AdminComponent, canActivate: [isAdminGuard], data: { breadcrumb: 'Admin' }}, // http://localhost:4200/admin
     {path: 'login', component: LoginComponent, data: { breadcrumb: 'Connexion' }},
     {path: 'register', component: RegisterComponent, data: { breadcrumb: 'Inscription' }},
-    // TODO: ajouter le isLoggedGuard sur la page de profil quand elle sera faite
-    {path: 'fridge', component: FridgeComponent}, // TMP
+    {path: 'profile', component: ProfileComponent, canActivate: [isLoggedGuard]},
 ];
