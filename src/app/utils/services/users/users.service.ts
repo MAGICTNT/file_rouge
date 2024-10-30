@@ -21,15 +21,13 @@ export class UsersService {
 
   // ----- Méthodes -----
 
-  doLogin(consumerLogin: ConsumerLogin): Observable<{ accessToken: string, pseudo: string, mail: string } | null>{
-    return this.http.post<{ accessToken: string, pseudo: string, mail: string }>(this.url + "/login", consumerLogin).pipe(
+  doLogin(consumerLogin: ConsumerLogin): Observable<{ pseudo: string, mail: string, role: string } | null>{
+    return this.http.post<{ pseudo: string, mail: string, role: string }>(this.url + "/login", consumerLogin).pipe(
       tap((res) => {
-        // localStorage.setItem("token", res.accessToken);
-        console.log(res); 
         localStorage.setItem("isLogged", 'true');
         localStorage.setItem("pseudo", res.pseudo);
         localStorage.setItem("mail", res.mail);
-        localStorage.setItem("isAdmin", 'true'); // TODO: Ajouter le rôle de l'utilisateur dans le ConsumerLogin pour pouvoir le récupérer ici
+        localStorage.setItem("role", res.role);
       }),
       catchError((error) => {
         alert(error.message)
@@ -52,7 +50,8 @@ export class UsersService {
     localStorage.removeItem('isLogged');
     localStorage.removeItem('pseudo');
     localStorage.removeItem('mail');
-    localStorage.removeItem('isAdmin');
+    localStorage.removeItem('role');
+    localStorage.removeItem('fridge');
   }
 
   updateMail(mail: string, password: string): Observable<{ key: number, value: string } | null> {
@@ -60,7 +59,7 @@ export class UsersService {
   }
 
   updatePassword(password: string) {
-    return this.http.put<{ key: number, value: string }>(this.url + "/update", { pseudo: localStorage.getItem('pseudo'), mail: localStorage.getItem('mail'), password: password });
+    return this.http.put<{ key: number, value: string }>(this.url + "/update", { pseudo: localStorage.getItem('pseudo'), mail: localStorage.getItem('mail'), password: password , role: localStorage.getItem('role') });
   }
   
   isLogged(): boolean {
@@ -68,6 +67,6 @@ export class UsersService {
   }
 
   isAdmin(): boolean {
-    return localStorage.getItem('isAdmin') === 'true';
+    return localStorage.getItem('role') === 'admin';
   }
 }
