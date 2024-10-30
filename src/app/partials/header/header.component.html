@@ -10,9 +10,16 @@
                     <ul>
                         <li><a routerLink="/recettes" (click)="closeMenu()">Recettes</a></li>
                         <li><a routerLink="/recette/1" (click)="closeMenu()">Recette 1</a></li>
-                        <li><a routerLink="/login" (click)="closeMenu()">Connexion</a></li>
-                        <li><a routerLink="/register" (click)="closeMenu()">Inscription</a></li>
-                        <!-- <li><a routerLink="/profil" (click)="closeMenu()">Profil</a></li> -->
+                        @if(!isLogged()) {
+                            <li><a routerLink="/login" (click)="closeMenu()">Connexion</a></li>
+                            <li><a routerLink="/register" (click)="closeMenu()">Inscription</a></li>
+                        } @else {
+                            <li><a routerLink="/profile" (click)="closeMenu()">Profil</a></li>
+                            @if (isAdmin()) {
+                                <li><a routerLink="/admin" (click)="closeMenu()">Admin</a></li>
+                            }
+                            <li><a (click)="logout()">Deconnexion</a></li>
+                        }
                     </ul>
                 </nav>
             </div>
