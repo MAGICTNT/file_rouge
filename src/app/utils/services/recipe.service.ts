@@ -105,7 +105,7 @@ export class RecipeService {
    * Récupérer toutes les catégories
    */
   getCategories(): Observable<Category[]> {
-    return this.http.get<Category[]>(`${this.apiUrl}/categories`);
+    return this.http.get<Category[]>(`${this.apiUrl}/category/all`);
   }
 
   // -- Nutritions --
@@ -114,7 +114,7 @@ export class RecipeService {
    * Récupérer tous les types de nutrition
    */
   getNutritions(): Observable<Nutrition[]> {
-    return this.http.get<Nutrition[]>(`${this.apiUrl}/nutritions`);
+    return this.http.get<Nutrition[]>(`${this.apiUrl}/nutrition/all`);
   }
 
   // -- Ingrédients --
@@ -123,7 +123,7 @@ export class RecipeService {
    * Récupérer tous les ingrédients
    */
   getIngredients(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.apiUrl}/ingredients`);
+    return this.http.get<Ingredient[]>(`${this.apiUrl}/ingredient/all`);
   }
 
 

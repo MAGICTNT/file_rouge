@@ -17,9 +17,14 @@
                 <div class="select-container">
                     <select formControlName="idCategory" id="idCategory">
                         <option value="">-</option>
-						<option value="">Entrée</option>
-                        <option value="">Plat</option>
-                        <option value="">Désert</option>
+                        @for (cat of categories; track cat) {
+                            <option [value]="cat.id">{{cat.title}}</option>
+                        }
+                        @empty {
+                            <option value="">Entrée</option>
+                            <option value="">Plat</option>
+                            <option value="">Désert</option>
+                        }
                     </select>
                     <div class="arrow-down"></div>
                 </div>
@@ -74,6 +79,14 @@
                                 <option value="">-</option>
                                 @for (ing of ingredients; track ing;) {
                                     <option [value]="ing.id">{{ ing.title }}</option>
+                                }
+                                @empty {
+                                    <option value="1">Farine</option>
+                                    <option value="2">Lait</option>
+                                    <option value="3">Oeuf</option>
+                                    <option value="4">Sucre</option>
+                                    <option value="5">Sel</option>
+                                    <option value="6">Levure</option>
                                 }
                                 </select>
                                 <div class="arrow-down"></div>
