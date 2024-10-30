@@ -1,6 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, ValidationErrors, Validators } from '@angular/forms';
 import { UsersService } from '../../utils/services/users/users.service';
 import { ConsumerRegister } from '../../types/consumerRegister.type';
 import { Router } from '@angular/router';
@@ -24,9 +24,41 @@ export class RegisterComponent {
   constructor(private userService: UsersService, private router: Router) {}
 
   register() {
-    if (this.form.invalid || this.form.value.password !== this.form.value.confirmPassword) {
-      alert("Please check your inputs.");
-      return;
+    const mailMessage: HTMLElement | null = document.querySelector("#mailMessage");
+    const pseudoMessage: HTMLElement | null = document.querySelector("#pseudoMessage");
+    const passwordMessage: HTMLElement | null = document.querySelector("#passwordMessage");
+    const confirmPasswordMessage: HTMLElement | null = document.querySelector("#confirmPasswordMessage");
+
+    if(pseudoMessage) {
+      if(this.form.get('pseudo')?.errors?.['required']) {
+        pseudoMessage.innerHTML = "Please enter a pseudo";
+      } else {
+        pseudoMessage.innerHTML = ''
+      }
+    }
+
+    if(mailMessage) {
+      if(this.form.get('mail')?.errors?.['required'] || this.form.get('mail')?.errors?.['email']) {
+        mailMessage.innerHTML = "Please enter a valid email address";
+      } else {
+        mailMessage.innerHTML = ''
+      }
+    }
+
+    if(passwordMessage) {
+      if(this.form.get('password')?.errors?.['required'] || this.form.get('password')?.errors?.['minlength']) {
+        passwordMessage.innerHTML = "Your password must have at least 6 characters";
+      } else {
+        passwordMessage.innerHTML = ''
+      }
+    }
+
+    if(confirmPasswordMessage) {
+      if(this.form.value.password !== this.form.value.confirmPassword) {
+        confirmPasswordMessage.innerHTML = "The passwords do not match";
+      } else {
+        confirmPasswordMessage.innerHTML = ''
+      }
     }
 
     const consumerRegister: ConsumerRegister = {

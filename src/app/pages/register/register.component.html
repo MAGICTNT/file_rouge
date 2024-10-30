@@ -7,25 +7,30 @@
                 <label for="pseudo">Nom d'utilisateur :
                     <input type="text" id="pseudo" formControlName="pseudo" required>
                 </label>
+                <small id="pseudoMessage"></small>
             </div>
             <div>
                 <label for="mail">Email :
                     <input type="email" id="mail" formControlName="mail" required>
                 </label>
+                <small id="mailMessage"></small>
             </div>
             <div>
                 <label for="password">Mot de passe :
                     <input type="password" id="password" formControlName="password" required>
                 </label>
+                <small id="passwordMessage"></small>
             </div>
             <div>
                 <label for="confirmPassword">Confirmer le mot de passe :
                     <input type="password" id="confirmPassword" formControlName="confirmPassword" required>
                 </label>
+                <small id="confirmPasswordMessage"></small>
             </div>
 
             <div class="right">
-                <button class="btn btn-success" [disabled]="form.invalid || form.value.password !== form.value.confirmPassword">Inscription</button>
+                <button class="btn btn-success" >Inscription</button>
+                <!-- [disabled]="form.invalid || form.value.password !== form.value.confirmPassword" -->
             </div>
         </form>
     </div>
