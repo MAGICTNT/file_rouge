@@ -6,9 +6,15 @@
     <h2 class="h-triangle">Rechercher une recette</h2>
 
     <form>
-        <label for="title">
-            <input type="text" id="title" placeholder="Rechercher une recette" [(ngModel)]="searchQuery" (input)="onSearch()">
-        </label>
+        <div for="title">
+            <input type="text" 
+            id="title" 
+            placeholder="Rechercher une recette" 
+            [value]="searchQuery"
+        (input)="onSearch($event)"
+            >
+        </div>
+        <p>{{searchQuery}}</p>
 
         <!-- <div class="right">
             <button class="btn btn-success" type="submit">Valider</button>
