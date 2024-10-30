@@ -20,8 +20,6 @@ export class HomeComponent implements OnInit {
 
   latestRecipes: Recipe[] = [];
 
-  // text: string = ""
-
 
   // ----- Constructeur -----
 
@@ -34,15 +32,15 @@ export class HomeComponent implements OnInit {
     this.recipeService.getRecipes().subscribe((data: any[]) => {
       this.topViewedRecipes = data
         .map(item => item.recipe) // Extraire uniquement les recettes
-        .sort((a, b) => b.seen - a.seen) // Trie les recettes par ordre décroissant des vues
-        .slice(0, 4); // Sélectionne les 4 premières après le tri
+        .sort((a, b) => b.seen - a.seen)
+        .slice(0, 4); // 4 premières
     });
   
     this.recipeService.getRecipes().subscribe((data: any[]) => {
       this.latestRecipes = data
         .map(item => item.recipe) // Extraire uniquement les recettes
-        .slice(-4) // Afficher les 4 dernières recettes
-        .reverse(); // Inverser l'ordre
+        .slice(-4) // 4 dernières
+        .reverse();
     });
   }
 
