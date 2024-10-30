@@ -31,27 +31,19 @@ export class HomeComponent implements OnInit {
   // ----- Méthodes -----
 
   ngOnInit(): void {
-
-    this.recipeService.getRecipes().subscribe((recipes) => {
-      this.topViewedRecipes = recipes
+    this.recipeService.getRecipes().subscribe((data: any[]) => {
+      this.topViewedRecipes = data
+        .map(item => item.recipe) // Extraire uniquement les recettes
         .sort((a, b) => b.seen - a.seen) // Trie les recettes par ordre décroissant des vues
         .slice(0, 4); // Sélectionne les 4 premières après le tri
     });
-
   
-    this.recipeService.getRecipes().subscribe((recipes) => {
-      this.latestRecipes = recipes.slice(-4).reverse(); // Afficher les 4 dernières recettes
+    this.recipeService.getRecipes().subscribe((data: any[]) => {
+      this.latestRecipes = data
+        .map(item => item.recipe) // Extraire uniquement les recettes
+        .slice(-4) // Afficher les 4 dernières recettes
+        .reverse(); // Inverser l'ordre
     });
-
-
-    // this.usersService.doHello().subscribe({
-    //   next: (res) => {
-    //     this.text = res
-    //   },
-    //   error: (err) => {
-    //     console.log("Error " +  JSON.stringify(err))
-    //   }
-    // });
   }
 
 

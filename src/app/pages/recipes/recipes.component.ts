@@ -29,21 +29,22 @@ export class RecipesComponent {
     // ----- Méthodes -----
 
     ngOnInit(): void {
-      // this.getRecipes();
-
-      this.recipesService.getRecipes().subscribe((data) => {
-        this.recipes = data;
-        this.filteredRecipes = data; // Initialise l'affichage avec toutes les recettes
-      });
+      this.getRecipes();
     }
 
+    
     /**
      * Récupère toutes les recettes depuis le service
      */
     getRecipes(): void {
       this.recipesService.getRecipes().subscribe((data: any[]) => {
-        this.recipes = data;
         console.log(data);
+
+        // this.recipes = data;
+        // this.filteredRecipes = data;
+
+        this.recipes = data.map(item => item.recipe); // Extraire uniquement les recettes
+        this.filteredRecipes = this.recipes; // Mettre à jour les recettes filtrées
       });
     }
 
