@@ -47,7 +47,8 @@
         <li>Vanille : 1</li> -->
 
         @for (ingredient of recipe?.ingredients; track ingredient) {
-            <li>{{ ingredient.title }} : {{ ingredient.quantity }} {{ ingredient.unit }}</li>
+            <!-- <li>{{ ingredient.title }} : {{ ingredient.quantity }} {{ ingredient.unit }}</li> -->
+            <li>{{ ingredient.title }} : {{ ingredient.quantity }} g</li>
         }
     </ul>
 

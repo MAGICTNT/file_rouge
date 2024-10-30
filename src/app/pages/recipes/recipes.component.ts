@@ -19,7 +19,7 @@ export class RecipesComponent {
     recipes: Recipe[] = [];
     filteredRecipes: Recipe[] = [];
     searchQuery: string = '';
-    
+
 
     // ----- Constructeur -----
   
@@ -43,8 +43,12 @@ export class RecipesComponent {
         // this.recipes = data;
         // this.filteredRecipes = data;
 
-        this.recipes = data.map(item => item.recipe); // Extraire uniquement les recettes
+        this.recipes = data; // Utiliser directement les données reçues
         this.filteredRecipes = this.recipes; // Mettre à jour les recettes filtrées
+
+        // this.recipes = data.map(item => item.recipe); // Extraire uniquement les recettes
+        // this.filteredRecipes = this.recipes; // Mettre à jour les recettes filtrées
+        
       });
     }
 
