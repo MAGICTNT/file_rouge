@@ -28,22 +28,13 @@ export class UsersService {
         localStorage.setItem("pseudo", res.pseudo);
         localStorage.setItem("mail", res.mail);
         localStorage.setItem("role", res.role);
-      }),
-      catchError((error) => {
-        alert(error.message)
-        return of(null)
       })
     );
   }
   
 
   doRegister(consumerRegister: ConsumerRegister): Observable<ConsumerRegister | null>{
-    return this.http.post<ConsumerRegister>(this.url + "/new", consumerRegister).pipe(
-      catchError((error) => {
-        alert(error.message)
-        return of(null)
-      })
-    );
+    return this.http.post<ConsumerRegister>(this.url + "/new", consumerRegister);
   }
 
   doLogout(): void {
