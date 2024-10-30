@@ -86,6 +86,8 @@ export class AdminComponent implements OnInit {
    */
   addIngredient(): void {
     this.ingredientsArray.push(this.createIngredient());
+
+    console.log("Ingrédients : ", this.ingredientsArray.value);
   }
 
   /**
@@ -101,22 +103,29 @@ export class AdminComponent implements OnInit {
    * Ajouter une recette
    */
   addRecipe(): void {
+    console.log("Valeurs du formulaire:", this.recipe_form.value);
+    console.log("État du formulaire valide:", this.recipe_form.valid);
+    console.log("Erreurs du formulaire:", this.recipe_form.errors);
+
     if (this.recipe_form.valid) {
-      const newRecipe: any = {
+      console.log(this.recipe_form.value);
+
+      const newRecipe: Recipe = {
+      // const newRecipe: any = {
+        id: this.recipes.length > 0 ? this.recipes[this.recipes.length - 1].id + 1 : 1,
         title: this.recipe_form.value.title,
-        numberPeople: this.recipe_form.value.numberPeople,
-        duration: this.recipe_form.value.duration,
-        description: this.recipe_form.value.description,
-        seen: 0,
+        idCategory: this.recipe_form.value.idCategory,
         picture: this.recipe_form.value.picture,
-        nutritionTitle: this.recipe_form.value.idNutrition,
-        categoryTitle: this.recipe_form.value.idCategory,
+        duration: this.recipe_form.value.duration,
+        numberPeople: this.recipe_form.value.numberPeople,
+        description: this.recipe_form.value.description,
+        idNutrition: this.recipe_form.value.idNutrition,
         ingredients: this.recipe_form.value.ingredients.map((ing: any) => ({
-          id: ing.id,
-          title: this.ingredients.find(item => item.id === ing.id)?.title || '',
-          quantity: ing.quantity
+            id: ing.id,
+            quantity: ing.quantity
         })),
-        instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text)
+        instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text),
+        seen: 0
       };
   
       this.recipeService.createRecipe(newRecipe).subscribe(() => {
@@ -125,7 +134,7 @@ export class AdminComponent implements OnInit {
       });
     }
     else {
-      console.log("Formulaire invalide");
+      console.log("Formulaire invalide", this.recipe_form.errors);
     }
   }
   
@@ -144,6 +153,8 @@ export class AdminComponent implements OnInit {
 
   addInstruction(): void {
     this.instructions.push(this.createInstruction());
+
+    console.log("Instructions : ", this.instructions.value);
   }
 
   deleteInstruction(): void {
