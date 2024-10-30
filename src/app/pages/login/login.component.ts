@@ -25,6 +25,10 @@ export class LoginComponent {
     this.userService.doLogin(consumer).subscribe({
       next: (res) => {
         this.router.navigate(['/']);
+      },
+      error: (err) => {
+        const loginMessage: HTMLElement | null = document.querySelector('#loginMessage');
+        if (loginMessage) loginMessage.innerHTML = "Login or password incorrect";
       }
     })
   }
