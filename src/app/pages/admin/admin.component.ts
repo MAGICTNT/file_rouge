@@ -102,25 +102,25 @@ export class AdminComponent implements OnInit {
    */
   addRecipe(): void {
     if (this.recipe_form.valid) {
-      const newRecipe: Recipe = {
-        id: this.recipes.length > 0 ? this.recipes[this.recipes.length - 1].id + 1 : 1,
+      const newRecipe: any = {
         title: this.recipe_form.value.title,
-        idCategory: this.recipe_form.value.idCategory,
-        picture: this.recipe_form.value.picture,
-        duration: this.recipe_form.value.duration,
         numberPeople: this.recipe_form.value.numberPeople,
+        duration: this.recipe_form.value.duration,
         description: this.recipe_form.value.description,
-        idNutrition: this.recipe_form.value.idNutrition,
+        seen: 0,
+        picture: this.recipe_form.value.picture,
+        nutritionTitle: this.recipe_form.value.idNutrition,
+        categoryTitle: this.recipe_form.value.idCategory,
         ingredients: this.recipe_form.value.ingredients.map((ing: any) => ({
           id: ing.id,
+          title: this.ingredients.find(item => item.id === ing.id)?.title || '',
           quantity: ing.quantity
-        })), // Extraction des ingrédients et des quantités
-        instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text),
-        seen: 0
+        })),
+        instructions: this.recipe_form.value.instructions.map((inst: any) => inst.text)
       };
-
+  
       this.recipeService.createRecipe(newRecipe).subscribe(() => {
-        this.getRecipes();
+        this.getRecipes(); // Rafraîchir les recettes
         this.recipe_form.reset();
       });
     }
@@ -128,6 +128,7 @@ export class AdminComponent implements OnInit {
       console.log("Formulaire invalide");
     }
   }
+  
 
   // --- Instructions ---
 
