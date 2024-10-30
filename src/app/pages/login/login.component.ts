@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { UsersService } from '../../utils/services/users/users.service';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,15 +18,13 @@ export class LoginComponent {
     password: new FormControl("", Validators.required)
   })
 
-  loged: string = "Pas connecté";
-  constructor(private userService: UsersService){}
+  constructor(private userService: UsersService, private router: Router){}
 
   login(){
     const consumer = this.form.value;
     this.userService.doLogin(consumer).subscribe({
       next: (res) => {
-        console.log(res);
-        this.loged = "Connecté";
+        this.router.navigate(['/']);
       }
     })
   }
