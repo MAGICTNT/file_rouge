@@ -17,12 +17,12 @@
     
                 <div class="recipe-box">
                     <div class="recipe-box-in">
-                        <a [routerLink]="['/recipes', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
+                        <a [routerLink]="['/recette', recipe.id]" class="img"><img src="assets/img/{{ recipe.picture }}" alt="{{ recipe.title }}"></a>
                         <div class="txt">
                             <h2>{{ recipe.title }}</h2>
                             <p>{{ recipe.description }}</p>
                             <p class="views">👁️ {{ recipe.seen }} vues</p>
-                            <a [routerLink]="['/recipes', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
+                            <a [routerLink]="['/recette', recipe.id]" class="mini-btn btn-success">Voir Détails</a>
                         </div>
                     </div>
                 </div>

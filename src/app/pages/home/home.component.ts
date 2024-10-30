@@ -28,18 +28,32 @@ export class HomeComponent implements OnInit {
 
   // ----- Méthodes -----
 
+  // ngOnInit(): void {
+  //   this.recipeService.getRecipes().subscribe((data: any[]) => {
+  //     this.topViewedRecipes = data
+  //       .map(item => item.recipe) // Extraire uniquement les recettes
+  //       .sort((a, b) => b.seen - a.seen)
+  //       .slice(0, 4); // 4 premières
+  //   });
+  
+  //   this.recipeService.getRecipes().subscribe((data: any[]) => {
+  //     this.latestRecipes = data
+  //       .map(item => item.recipe) // Extraire uniquement les recettes
+  //       .slice(-4) // 4 dernières
+  //       .reverse();
+  //   });
+  // }
+
   ngOnInit(): void {
     this.recipeService.getRecipes().subscribe((data: any[]) => {
       this.topViewedRecipes = data
-        .map(item => item.recipe) // Extraire uniquement les recettes
-        .sort((a, b) => b.seen - a.seen)
+        .sort((a, b) => b.seen - a.seen) // Ordre décroissant des vues
         .slice(0, 4); // 4 premières
     });
-  
+
     this.recipeService.getRecipes().subscribe((data: any[]) => {
       this.latestRecipes = data
-        .map(item => item.recipe) // Extraire uniquement les recettes
-        .slice(-4) // 4 dernières
+        .slice(-4) // Afficher les 4 dernières recettes
         .reverse();
     });
   }
