@@ -32,6 +32,7 @@ export class RecipesComponent {
       // this.getRecipes();
 
       this.recipesService.getRecipes().subscribe((data) => {
+        console.log(data)
         this.recipes = data;
         this.filteredRecipes = data; // Initialise l'affichage avec toutes les recettes
       });

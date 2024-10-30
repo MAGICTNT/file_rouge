@@ -8,12 +8,10 @@ export interface Recipe {
   numberPeople: number;
   duration: number;
   description: string;
-  picture: string;
   seen: number;
+  picture: string;
   idNutrition: number;
   idCategory: number;
-  ingredients: { id: number; quantity: number }[];
-  instructions: string[];
 }
 
 export interface Category {
@@ -40,7 +38,7 @@ export class RecipeService {
 
   // ----- Propriétés -----
 
-  private apiUrl = 'http://localhost:4200/api';
+  private apiUrl = 'http://localhost:8080/api';
 
   recipes: Recipe[] = [];
 
@@ -65,7 +63,7 @@ export class RecipeService {
    * Récupérer toutes les recettes
    */
   getRecipes(): Observable<Recipe[]> {
-    return this.http.get<Recipe[]>(`${this.apiUrl}/recipes`);
+    return this.http.get<Recipe[]>(`${this.apiUrl}/recipe/all`);
   }
 
   /**
