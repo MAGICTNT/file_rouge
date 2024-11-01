@@ -15,6 +15,7 @@ Ce projet est une application web de gestion de recettes, développée en Angula
 - [Responsive Design et Accessibilité](#responsive-design-et-accessibilité)
 - [Gestion des Erreurs](#gestion-des-erreurs)
 - [Performance et Optimisations](#performance-et-optimisations)
+- [Contribution](#contribution)
 
 ## Fonctionnalités
 
@@ -26,7 +27,8 @@ Ce projet est une application web de gestion de recettes, développée en Angula
 
 ## Installation
 
-npm install
+Pour installer les dépendances et tester le projet, utilisez les commandes suivantes :
+**npm install**
 
 ## Organisation et Structure du Code
 
