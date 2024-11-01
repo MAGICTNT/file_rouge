@@ -27,7 +27,7 @@ Ce projet est une application web de gestion de recettes, développée en Angula
 
 ## Installation
 
-Pour installer les dépendances et tester le projet, utilisez les commandes suivantes :
+Pour installer les dépendances et tester le projet, utilisez la commande suivante :
 **npm install**
 
 ## Organisation et Structure du Code
@@ -94,4 +94,4 @@ Les personnes ayant contribué au développement de ce projet sont :
 
 ---
 
-**Note :** Ce frontend est conçu pour être utilisé en tandem avec le backend Angular disponible [ici](https://github.com/MAGICTNT/back_project).
+**Note :** Ce frontend est conçu pour être utilisé en tandem avec le backend SpringBoot disponible [ici](https://github.com/MAGICTNT/back_project).
