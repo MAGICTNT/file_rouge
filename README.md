@@ -80,3 +80,16 @@ Les images ont été soigneusement optimisées, chacune ne dépassant pas **120 
 Cependant, la **performance globale est de 55%**, principalement en raison des charges liées aux frameworks utilisés dans le projet.
 
 Ces résultats témoignent de l'effort apporté par notre équipe pour rendre le site performant, optimisé, et accessible aux utilisateurs. Un projet fait par amour par des fans passionnés.
+
+## Contribution
+
+Les personnes ayant contribué au développement de ce projet sont :
+
+- **Haiou King** - [GitHub](https://github.com/mangaluxe)
+- **Tibault Garcia** - [GitHub](https://github.com/Mysthaqua)
+- **Guilaume** - [GitHub](https://github.com/sun7code)
+- **Maxime** - [GitHub](https://github.com/MAGICTNT)
+
+---
+
+**Note :** Ce frontend est conçu pour être utilisé en tandem avec le backend Angular disponible [ici](https://github.com/MAGICTNT/back_project).
