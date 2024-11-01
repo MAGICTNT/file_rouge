@@ -26,7 +26,7 @@
 
   <hr />
 
-  <form [formGroup]="ingredient_form" (ngSubmit)="addToFridge()">
+  <form [formGroup]="ingredient_form" (ngSubmit)="addToFridge()" class="form-box">
     <div>
       <select formControlName="ingredient" name="ingredient" id="ingredient">
         @for(ingredient of selectOptions; track ingredient) {
