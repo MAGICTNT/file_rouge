@@ -7,11 +7,7 @@
 
     <form>
         <div for="title">
-            <input type="text" 
-            id="title" 
-            placeholder="Rechercher une recette" 
-            [value]="searchQuery"
-        (input)="onSearch($event)"
+            <input type="text" id="title" placeholder="Rechercher une recette" [value]="searchQuery" (input)="onSearch($event)"
             >
         </div>
 

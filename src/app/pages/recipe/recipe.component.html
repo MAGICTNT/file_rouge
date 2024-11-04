@@ -58,7 +58,8 @@
         <!-- <p>Qui aime les choux à la crème ? Tout le monde ! Et ceux-là sont tout simplement divins. Une pâte à choux légère et aérienne, de la crème pâtissière vanillée gourmande et savoureuse... Voilà LA recette qui vous fera réussir des petits choux exquis à coup sûr pour épater !</p>
         <p>Testez-la, vous nous en direz des nouvelles (et vos invités aussi) !</p> -->
 
-        @for (instruction of recipe?.instructions; track instruction) {
+        @for (instruction of recipe?.instructions; track instruction; let i = $index) {
+            <p class="b">Étape {{ i+1 }} :</p>
             <p>{{ instruction.description }}</p>
         }
 
