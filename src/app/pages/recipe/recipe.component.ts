@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { Recipe, RecipeService } from '../../utils/services/recipe.service';
 import { ActivatedRoute } from '@angular/router'; // ActivatedRoute permet de récupérer les paramètres de l'URL actuel
 import { CommonModule } from '@angular/common';
+import { Title } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-recipe',
@@ -22,21 +23,61 @@ export class RecipeComponent {
 
   // ----- Constructeur -----
 
-  constructor(private recipeService: RecipeService, private route: ActivatedRoute) {}
+  constructor(
+    private recipeService: RecipeService,
+    private route: ActivatedRoute,
+
+    private titleService: Title // Injecter Title
+  ) {}
 
 
   // ----- Méthodes -----
 
+  // ngOnInit(): void {
+  //   const recipeId = Number(this.route.snapshot.paramMap.get('id'));
+    
+  //   this.getRecipe(); // Récupère la recette
+
+  //   this.recipeService.getRecipeById(recipeId).subscribe((data) => {
+  //     this.recipe = data;
+  //     console.log('Ingrédients de la recette :', this.recipe.ingredients);
+  //     this.isFavorite = this.checkIfFavorite(recipeId);
+
+  //     this.recipeService.getIngredients().subscribe(allIngredients => {
+  //       this.ingredientsDetails = this.recipe?.ingredients.map(ing => {
+  //         const ingredientDetail = allIngredients.find(ingredient => ingredient.id === ing.id);
+  //         return {
+  //           title: ingredientDetail?.title || '',
+  //           quantity: ing.quantity,
+  //           unit: ingredientDetail?.unit || ''
+  //         };
+  //       }) || [];
+  //     });
+  //   });
+  // }
+
+
+  // getRecipe(): void {
+  //   const id = Number(this.route.snapshot.paramMap.get('id')); // Récupération de l'ID depuis l'URL
+  //   this.recipeService.getRecipeById(id).subscribe(recipe => {
+  //     this.recipe = recipe; // Stockage des données de la recette
+  //   });
+  // }
+
+
   ngOnInit(): void {
     const recipeId = Number(this.route.snapshot.paramMap.get('id'));
-    
-    this.getRecipe(); // Récupère la recette
+    this.getRecipe(recipeId);
+  }
 
+  getRecipe(recipeId: number): void {
     this.recipeService.getRecipeById(recipeId).subscribe((data) => {
       this.recipe = data;
-      console.log('Ingrédients de la recette :', this.recipe.ingredients);
       this.isFavorite = this.checkIfFavorite(recipeId);
 
+      this.titleService.setTitle(this.recipe?.title || 'Détail de la recette'); // Titre de la page avec le titre de la recette (titre par défaut si aucun titre : Détail de la recette)
+
+      // Récupérer les détails des ingrédients :
       this.recipeService.getIngredients().subscribe(allIngredients => {
         this.ingredientsDetails = this.recipe?.ingredients.map(ing => {
           const ingredientDetail = allIngredients.find(ingredient => ingredient.id === ing.id);
@@ -51,13 +92,7 @@ export class RecipeComponent {
   }
 
 
-  getRecipe(): void {
-    const id = Number(this.route.snapshot.paramMap.get('id')); // Récupération de l'ID depuis l'URL
-    this.recipeService.getRecipeById(id).subscribe(recipe => {
-      this.recipe = recipe; // Stockage des données de la recette
-    });
-  }
-
+  // ----- Gérer favoris -----
 
   toggleFavorite(): void {
     this.isFavorite = !this.isFavorite;

@@ -21,11 +21,6 @@ export class BreadcrumbComponent implements OnInit {
 
   breadcrumbs: Breadcrumb[] = [];
 
-  // breadcrumbs = [
-  //   { url: '/', label: 'Accueil' },
-  //   { url: '/recettes', label: 'Liste de Recettes' },
-  // ];
-
 
   // ----- Constructeur -----
 
@@ -63,7 +58,6 @@ export class BreadcrumbComponent implements OnInit {
         breadcrumbs.push({ label, url });
       }
 
-      // return this.buildBreadcrumb(child, url, breadcrumbs);
       this.buildBreadcrumb(child, url, breadcrumbs);
     }
 
